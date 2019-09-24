@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+echo '>>> mix deps.get'
+mix deps.get
+cd assets
+
+echo '>>> npm install'
+npm install
+cd ..
+
+echo '>>> mix compile'
+mix compile
+
+echo '>>> mix test'
+mix test
+
+echo '>>> setup distillery'
+mix distillery.init
+mkdir -p priv/static
+
+echo '>>> done'
+echo "Start the server with 'mix phx.server'"
+echo "Create a release with 'script/release'"
+

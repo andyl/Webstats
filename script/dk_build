@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo '>>> docker build'
-docker build -t phx-webstats .
+docker build -t phx-logstore .
 
 echo '>>> done'
 echo "Run the docker image with 'script/dk_run'"

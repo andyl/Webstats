@@ -1,6 +1,21 @@
 use Mix.Config
 
-config :webstats, WebstatsWeb.Endpoint,
+# Configure your database
+config :logstore_data, LogstoreData.Repo,
+  username: "postgres",
+  password: "postgres",
+  database: "logstore_data_dev",
+  hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
+# For development, we disable any cache and enable
+# debugging and code reloading.
+#
+# The watchers configuration can be used to run external
+# watchers to your application. For example, we use it
+# with webpack to recompile .js and .css sources.
+config :logstore_web, LogstoreWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -11,7 +26,7 @@ config :webstats, WebstatsWeb.Endpoint,
       "--mode",
       "development",
       "--watch-stdin",
-      cd: Path.expand("../assets", __DIR__)
+      cd: Path.expand("../apps/logstore_web/assets", __DIR__)
     ]
   ]
 
@@ -40,26 +55,12 @@ config :webstats, WebstatsWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :webstats, WebstatsWeb.Endpoint,
+config :logstore_web, LogstoreWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/webstats_web/templates/.*(eex)$",
-      ~r"lib/webstats_web/templates/.*(leex)$",
-      ~r"lib/webstats_web/views/.*(ex)$",
-      ~r{lib/webstats_web/live/.*(ex)$}
+      ~r"lib/logstore_web/{live,views}/.*(ex)$",
+      ~r"lib/logstore_web/templates/.*(eex)$"
     ]
   ]
-
-# Do not include metadata nor timestamps in development logs
-config :logger, :console, format: "[$level] $message\n"
-
-# Set a higher stacktrace during development. Avoid configuring such
-# in production as building large stacktraces may be expensive.
-config :phoenix, :stacktrace_depth, 20
-
-# Initialize plugs at runtime for faster development compilation
-config :phoenix, :plug_init_mode, :runtime
-
-config :mix_test_watch, clear: true

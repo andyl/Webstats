@@ -15,12 +15,16 @@ defmodule LogstoreData.Schema.View do
     timestamps()
   end
 
-  @doc """
-  Builds a changeset based on the `struct` and `params`.
-  """
-  def changeset(struct, params \\ %{}) do
-    struct
-    |> cast(params, [:token])
-    |> validate_required([:token])
+  def changeset(view, params \\ %{}) do
+    required_fields = [:token]
+    optional_fields = [:cip, :cua, :site_id]
+
+    view
+    |> cast(params, required_fields ++ optional_fields)
+    |> validate_required(required_fields)
+  end
+
+  def new_changeset do
+    changeset(%LogstoreData.Schema.View{}, %{})
   end
 end

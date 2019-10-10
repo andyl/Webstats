@@ -11,7 +11,7 @@ defmodule LogstoreData.Schema.ViewTest do
   describe "changesets" do
     test "accepts valid input" do
       tmap = %View{}
-      attr = %{url: "asdf"}
+      attr = %{token: "asdf"}
       cs = View.changeset(tmap, attr)
       assert cs.valid?
     end

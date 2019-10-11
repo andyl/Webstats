@@ -9,7 +9,6 @@ defmodule LogstoreData.Schema.View do
     field :client_ip,     :string
     field :client_ua,     :string
 
-    belongs_to :site, LogstoreData.Schema.Site
     belongs_to :token, LogstoreData.Schema.Token
 
     timestamps()
@@ -17,7 +16,7 @@ defmodule LogstoreData.Schema.View do
 
   def changeset(view, params \\ %{}) do
     required_fields = []
-    optional_fields = [:token_id, :site_id, :client_ip, :client_ua, :site_id]
+    optional_fields = [:token_id, :client_ip, :client_ua]
 
     view
     |> cast(params, required_fields ++ optional_fields)

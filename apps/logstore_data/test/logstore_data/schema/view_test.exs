@@ -33,6 +33,35 @@ defmodule LogstoreData.Schema.ViewTest do
     end
   end
 
+  describe "inserting fields" do
+    test "using client_ip" do
+      tmap = %View{}
+      attr = %{client_ip: "xxxx"}
+      cset = View.changeset(tmap, attr)
+      assert count(View) == 0
+      assert {:ok, _result} = Repo.insert(cset)
+      assert count(View) == 1
+    end
+
+    test "using client_ua" do
+      tmap = %View{}
+      attr = %{client_ua: "xxxxx"}
+      cset = View.changeset(tmap, attr)
+      assert count(View) == 0
+      assert {:ok, _result} = Repo.insert(cset)
+      assert count(View) == 1
+    end
+
+    test "using both" do
+      tmap = %View{}
+      attr = %{client_ip: "qwer", client_ua: "xxxxx"}
+      cset = View.changeset(tmap, attr)
+      assert count(View) == 0
+      assert {:ok, _result} = Repo.insert(cset)
+      assert count(View) == 1
+    end
+  end
+
   describe "using Factory" do
     test "building an entity" do
       assert build(:view)

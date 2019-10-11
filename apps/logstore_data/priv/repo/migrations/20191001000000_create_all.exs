@@ -9,15 +9,16 @@ defmodule LogstoreData.Repo.Migrations.CreateAll do
     end
 
     create table(:tokens) do
+      add :site_id, references(:sites, on_delete: :delete_all)
       add :key, :string
+      add :path, :string
       timestamps()
     end
 
     create index(:tokens, [:key])
 
     create table(:views) do
-      add :site_id,    references(:sites)
-      add :token_id,   references(:tokens)
+      add :token_id,   references(:tokens, on_delete: :delete_all)
       add :client_ip,  :string
       add :client_ua,  :string
       timestamps()

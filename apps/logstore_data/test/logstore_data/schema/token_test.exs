@@ -41,7 +41,7 @@ defmodule LogstoreData.Schema.TokenTest do
       assert tken.key == "asdf"
     end
   end
-   
+
   describe "using Factory" do
     test "building an entity" do
       assert build(:token)

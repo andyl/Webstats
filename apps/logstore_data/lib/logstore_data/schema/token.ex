@@ -7,7 +7,9 @@ defmodule LogstoreData.Schema.Token do
 
   schema "tokens" do
     field :key,   :string
+    field :path,  :string
 
+    belongs_to :site, LogstoreData.Schema.Site
     has_many :views, LogstoreData.Schema.View
 
     timestamps()
@@ -15,7 +17,7 @@ defmodule LogstoreData.Schema.Token do
 
   def changeset(token, params \\ %{}) do
     required_fields = [:key]
-    optional_fields = []
+    optional_fields = [:path, :site_id]
 
     token
     |> cast(params, required_fields ++ optional_fields)

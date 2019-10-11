@@ -7,9 +7,9 @@ defmodule LogstoreData.Schema.Site do
 
   schema "sites" do
     field :name, :string
-    field :url,  :integer
+    field :url,  :string
 
-    has_many :views, LogstoreData.Schema.View
+    has_many :tokens, LogstoreData.Schema.Token
 
     timestamps()
   end

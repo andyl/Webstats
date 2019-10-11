@@ -16,4 +16,12 @@ defmodule LogstoreWeb.LayoutView do
     </li>
     """
   end
+
+  def footer_img(conn) do
+    hostid = LogstoreData.Api.Site.apphost_id()
+    r_path = conn.request_path
+    """
+    <img src="/png0/#{hostid}?path=#{r_path}"></img>
+    """ |> Phoenix.HTML.raw()
+  end
 end

@@ -14,7 +14,7 @@ defmodule LogstoreWeb.EtagController do
 
   defp send_img(conn, filetype, params) do
     ipath = pixel_filepath(filetype)
-    token = find_or_create_token(conn) 
+    token = find_or_create_token(conn, params) 
     ftype = String.split(ipath, ".") |> List.last()
 
     record_view(token, conn, params)
@@ -25,14 +25,28 @@ defmodule LogstoreWeb.EtagController do
     |> send_file(200, ipath, 0, :all)
   end
 
-  defp record_view(token, _conn, _params) do
-    Api.View.create(%{}, token: token)
+  defp record_view(token, conn, _params) do
+  
+    opts = %{
+      client_ip: conn.remote_ip |> Tuple.to_list() |> Enum.join(".") || "",
+      client_ua: ua_for(conn)
+    }
+
+    Api.View.create(opts, token: token)
   end
 
-  defp find_or_create_token(conn) do
+  defp ua_for(conn) do
+    case Plug.Conn.get_req_header(conn, "user-agent") do
+      [] -> ""
+      [val] -> val
+      list -> list |> Enum.join(", ")
+    end
+  end
+
+  defp find_or_create_token(conn, params) do
     conn
     |> get_req_header("if-none-match")
-    |> Api.Token.find_or_create()
+    |> Api.Token.find_or_create(params)
   end
 
   defp pixel_filepath(type) do

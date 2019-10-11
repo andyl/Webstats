@@ -1,8 +1,13 @@
 defmodule LogstoreData.Schema.SiteTest do 
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   use LogstoreData.DataCase
 
   alias LogstoreData.Schema.Site
+  
+  setup do
+    Repo.delete_all(Site)
+    :ok 
+  end
 
   test "greet the world" do
     assert "hello" == "hello"
@@ -38,7 +43,7 @@ defmodule LogstoreData.Schema.SiteTest do
       assert insert(:site)
       assert count(Site) == 1
     end
-    
+
     test "inserting two entities" do
       assert count(Site) == 0
       assert insert(:site)

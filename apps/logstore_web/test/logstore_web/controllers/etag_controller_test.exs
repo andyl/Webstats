@@ -12,7 +12,7 @@ defmodule LogstoreWeb.EtagControllerTest do
 
   # basic response
   test "GET /png0/1", %{conn: conn} do
-    conn = get(conn, "/png0/1")
+    conn = get(conn, "/png0/#{siteid()}?path=/a/b/c")
     assert response(conn, 200)
   end
 
@@ -20,7 +20,7 @@ defmodule LogstoreWeb.EtagControllerTest do
   test "GET /png0/2", %{conn: conn} do
     assert count(Schema.View) == 0
     assert count(Schema.Token) == 0
-    conn = get(conn, "/png0/2")
+    conn = get(conn, "/png0/#{siteid()}")
     assert response(conn, 200) 
     assert count(Schema.View) == 1
     assert count(Schema.Token) == 1
@@ -30,8 +30,9 @@ defmodule LogstoreWeb.EtagControllerTest do
   test "GET /png0/3", %{conn: conn} do
     assert count(Schema.Token) == 0
     assert count(Schema.View) == 0
-    get(conn, "/png0/3")
-    get(conn, "/png0/3")
+    id = siteid()
+    get(conn, "/png0/#{id}")
+    get(conn, "/png0/#{id}")
     assert count(Schema.Token) == 2
     assert count(Schema.View) == 2
   end
@@ -40,13 +41,18 @@ defmodule LogstoreWeb.EtagControllerTest do
   test "GET /png0/4", %{conn: conn} do
     assert count(Schema.Token) == 0
     assert count(Schema.View) == 0
-    resp = get(conn, "/png0/4")
-    altconn(conn, resp) |> get("/png0/4")
+    id = siteid()
+    resp = get(conn, "/png0/#{id}")
+    altconn(conn, resp) |> get("/png0/#{id}")
     assert count(Schema.Token) == 1
     assert count(Schema.View) == 2
   end
 
   # ---------------------------------------------------------
+
+  defp siteid do
+    LogstoreData.Api.Site.apphost_id() 
+  end
 
   defp altconn(conn, resp) do
     case etag_for(resp) do

@@ -14,6 +14,9 @@ defmodule LogstoreData.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias LogstoreData.Repo
+  require Ecto.Query
+
   using do
     quote do
       alias LogstoreData.Repo
@@ -22,17 +25,23 @@ defmodule LogstoreData.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import LogstoreData.DataCase
+      import LogstoreData.Factory
     end
   end
 
   setup tags do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(LogstoreData.Repo)
 
-    unless tags[:async] do
+    if tags[:async] do
       Ecto.Adapters.SQL.Sandbox.mode(LogstoreData.Repo, {:shared, self()})
     end
 
     :ok
+  end
+
+  def count(type) do
+    Ecto.Query.from(element in type, select: count(element.id))
+    |> Repo.one()
   end
 
   @doc """

@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-echo '>>> docker run'
-echo "access using 'localhost:8444'"
-
-docker run -p 8444:4000 phx-logstore 

@@ -21,7 +21,13 @@ defmodule LogstoreWeb.Router do
     get "/urls", HomeController, :urls
     get "/logs", HomeController, :logs
     get "/data", HomeController, :data
-    get "/etag", EtagController, :index
+
+    get "/png0/:site_id", EtagController, :png0
+    get "/gif0/:site_id", EtagController, :gif0
+    get "/jpg0/:site_id", EtagController, :jpg0
+    get "/pngF/:site_id", EtagController, :pngF
+    get "/gifF/:site_id", EtagController, :gifF
+    get "/jpgF/:site_id", EtagController, :jpgF
 
     live "/demo", Demo
   end

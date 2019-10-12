@@ -17,19 +17,21 @@
 - [x] Create apphost function
 - [x] Create apphost_id function
 - [x] Study auth technique
+- [x] Create a pixel helper function
+- [x] Add footer pixel link
 
-- [ ] Create a pixel helper function
-- [ ] Add footer pixel link
+## 2019 Oct 12 Sat
 
-- [ ] Add site login (user/pass as config options)
+- [ ] gen.phx - bootstrap in node
+- [ ] gen.phx - font-awesome in node
+
+- [ ] Add user registration / login (copy from feedex)
 - [ ] Site Crud (Add/Remove/Update)
+- [ ] Define telemetry
+
+- [ ] Create logstore_rel
+- [ ] Add 
 
 ## TBD
 
-- [ ] Define telemetry
-
-## Sites
-
-- bugmark.net
-- connorleak.com
-
+- [ ] TBD

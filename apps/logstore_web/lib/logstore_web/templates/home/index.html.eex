@@ -1,6 +1,5 @@
 <div class="jumbotron text-center" style='padding: 1em;'>
   <h1><%= gettext "Welcome to %{name}!", name: "Logstore" %></h1>
-  <p>Your Generated Phoenix App</p>
 </div>
 
 <div class="row">

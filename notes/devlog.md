@@ -25,6 +25,8 @@
 - [ ] gen.phx - bootstrap in node
 - [ ] gen.phx - font-awesome in node
 
+- [ ] fix dual test-running problem
+
 - [ ] Add user registration / login (copy from feedex)
 - [ ] Site Crud (Add/Remove/Update)
 - [ ] Define telemetry

@@ -1,5 +1,5 @@
 defmodule LogstoreData.Schema.TokenTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   use LogstoreData.DataCase
 
   alias LogstoreData.Schema.Token

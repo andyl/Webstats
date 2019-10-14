@@ -9,6 +9,15 @@ defmodule LogstoreWeb.LayoutView do
     """
   end
 
+  def logout_link(conn, user) do
+    path = Routes.session_path(conn, :delete, user)
+    ~e"""
+    <li class="nav-item">
+      <%= link "LOGOUT", to: path, method: "delete", class: "nav-link" %>
+    </li>
+    """
+  end
+
   def ftr_link(conn, lbl, path) do
     ~e"""
     <li class="nav-item">

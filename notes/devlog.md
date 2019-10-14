@@ -28,19 +28,24 @@
 ## 2019 Oct 13 Sun
 
 - [x] fix dual test-running problem
+- [x] copy user registration / login from feedex
 
-- [ ] Add user registration / login (copy from feedex)
+## 2019 Oct 14 Mon
+
+- [ ] Finish user registration / login 
+- [ ] Merge to master and push
 - [ ] Site Crud (Add/Remove/Update)
+
+## TBD
 
 - [ ] Define telemetry
 
 - [ ] Create logstore_rel
 - [ ] Export to influx
+
 - [ ] Create grafana graphs
+
 - [ ] Add image tags to websites
+
 - [ ] Update Casmacc
-- [ ] Get rid of mautic
-
-## TBD
-
-- [ ] TBD
+- [ ] Swap mautic for Logstore

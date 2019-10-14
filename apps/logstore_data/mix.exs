@@ -39,6 +39,7 @@ defmodule LogstoreData.MixProject do
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
       {:ex_machina, "~> 2.3"},
+      {:pbkdf2_elixir, "~> 1.0"},
       {:jason, "~> 1.0"}
     ]
   end

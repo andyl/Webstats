@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Logstore</title>
     <link rel="icon" href="favicon.ico" sizes="32x32">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
   </head>
   <body style='padding-top: 70px;'>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="/">
-        <img src="images/cube.png" height=30></img>
+        <img src="/images/cube.png" height=30></img>
         Logstore
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,12 @@
           <%= hdr_link(@conn, "DATA", "/data") %>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-          <li class="text-white"><%= live_render(@conn, LogstoreWeb.TimeLcl) %></li>
+          <%= if @current_user do %>
+            <%= logout_link(@conn, @current_user) %>
+          <% else %>
+            <%= hdr_link(@conn, "LOGIN",  "/sessions/new") %>
+            <%= hdr_link(@conn, "SIGNUP", "/users/new") %>
+          <% end %>
         </ul>
       </div>
       </nav>

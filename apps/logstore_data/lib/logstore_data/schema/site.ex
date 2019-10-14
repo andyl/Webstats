@@ -9,6 +9,7 @@ defmodule LogstoreData.Schema.Site do
     field :name, :string
     field :url,  :string
 
+    belongs_to :user, LogstoreData.Schema.User
     has_many :tokens, LogstoreData.Schema.Token
 
     timestamps()

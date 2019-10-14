@@ -22,8 +22,10 @@
 
 ## 2019 Oct 12 Sat
 
-- [ ] gen.phx - bootstrap in node
-- [ ] gen.phx - font-awesome in node
+- [x] gen.phx - bootstrap in node
+- [x] gen.phx - font-awesome in node
+
+## 2019 Oct 13 Sun
 
 - [ ] fix dual test-running problem
 

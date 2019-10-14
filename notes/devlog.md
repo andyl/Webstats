@@ -27,14 +27,19 @@
 
 ## 2019 Oct 13 Sun
 
-- [ ] fix dual test-running problem
+- [x] fix dual test-running problem
 
 - [ ] Add user registration / login (copy from feedex)
 - [ ] Site Crud (Add/Remove/Update)
+
 - [ ] Define telemetry
 
 - [ ] Create logstore_rel
-- [ ] Add 
+- [ ] Export to influx
+- [ ] Create grafana graphs
+- [ ] Add image tags to websites
+- [ ] Update Casmacc
+- [ ] Get rid of mautic
 
 ## TBD
 

@@ -2,6 +2,7 @@ defmodule LogstoreData.Api.SiteTest do
   use ExUnit.Case, async: true
   use LogstoreData.DataCase
 
+
   alias LogstoreData.Api
   alias LogstoreData.Schema
 

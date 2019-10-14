@@ -23,7 +23,7 @@ defmodule LogstoreWeb.MixProject do
   def application do
     [
       mod: {LogstoreWeb.Application, []},
-      extra_applications: [:logger, :runtime_tools, :timex]
+      extra_applications: [:logger, :runtime_tools, :timex, :phoenix_ecto]
     ]
   end
 
@@ -41,9 +41,11 @@ defmodule LogstoreWeb.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix_ecto, "~> 4.0.0"},
       # ----- phoenix view helpers
       {:phoenix_active_link, "~> 0.2.1"},
-      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+      {:phoenix_live_view, "~> 0.3.1"},
+      {:phoenix_live_editable, path: "~/src/phoenix_live_editable"},
       # ----- util
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},
@@ -51,8 +53,9 @@ defmodule LogstoreWeb.MixProject do
       # ----- monitoring and tracing
       {:observer_cli, "~> 1.5"},
       # ----- development and test
-      {:phoenix_live_reload, "~> 1.2", only: :dev}
-      # {:mix_test_watch, "~> 0.8", only: :dev, runtime: false}
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      # ----- umbrella
+      {:logstore_data, in_umbrella: true}
     ]
   end
 end

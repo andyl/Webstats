@@ -1,8 +1,20 @@
 defmodule LogstoreData.Repo.Migrations.CreateAll do
+
   use Ecto.Migration
 
   def change do
+    create table(:users) do
+      add(:name,         :string)
+      add(:email,        :string)
+      add(:admin,        :boolean)
+      add(:pwd_hash,     :string)
+      add(:auth_token,   :string)
+      add(:last_seen_at, :utc_datetime)
+      timestamps(type: :utc_datetime)
+    end
+
     create table(:sites) do
+      add :user_id, references(:users, on_delete: :delete_all)
       add :name, :string
       add :url,  :string
       timestamps()
@@ -23,6 +35,8 @@ defmodule LogstoreData.Repo.Migrations.CreateAll do
       add :client_ua,  :string
       timestamps()
     end
+
+
   end
 end
 

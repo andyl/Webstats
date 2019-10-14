@@ -1,5 +1,5 @@
 defmodule LogstoreData.Schema.ViewTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   use LogstoreData.DataCase
 
   alias LogstoreData.Schema.View

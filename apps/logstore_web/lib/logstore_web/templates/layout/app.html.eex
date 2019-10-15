@@ -20,12 +20,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <%= hdr_link(@conn, "URLS", "/urls") %>
-          <%= hdr_link(@conn, "LOGS", "/logs") %>
-          <%= hdr_link(@conn, "DATA", "/data") %>
+          <%= if @current_user do %>
+            <%= hdr_link(@conn, "SITES", "/sites") %>
+            <%= hdr_link(@conn, "LOGS",  "/logs") %>
+          <% end %>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
           <%= if @current_user do %>
+            <%= hdr_link(@conn, "SETUP" , "/setup") %>
             <%= logout_link(@conn, @current_user) %>
           <% else %>
             <%= hdr_link(@conn, "LOGIN",  "/sessions/new") %>

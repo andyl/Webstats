@@ -19,10 +19,13 @@ defmodule LogstoreWeb.Router do
   scope "/", LogstoreWeb do
     pipe_through :browser
 
-    get "/",     HomeController, :index
-    get "/urls", HomeController, :urls
-    get "/logs", HomeController, :logs
-    get "/data", HomeController, :data
+    get "/",      HomeController, :index
+    get "/urls",  HomeController, :urls
+    get "/logs",  HomeController, :logs
+    get "/sites", HomeController, :sites
+    get "/views", HomeController, :views
+    get "/data",  HomeController, :data
+    get "/setup", HomeController, :setup
 
     get  "/login",  HomeController,  :login
     get  "/signup", HomeController,  :signup

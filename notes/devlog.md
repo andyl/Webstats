@@ -32,11 +32,10 @@
 
 ## 2019 Oct 14 Mon
 
-- [ ] Finish user registration / login 
-- [ ] Merge to master and push
-- [ ] Site Crud (Add/Remove/Update)
+- [x] Finish user registration / login 
+- [x] Merge to master and push
 
-## TBD
+- [ ] Site Crud (Add/Remove/Update)
 
 - [ ] Define telemetry
 
@@ -46,6 +45,8 @@
 - [ ] Create grafana graphs
 
 - [ ] Add image tags to websites
+
+## TBD
 
 - [ ] Update Casmacc
 - [ ] Swap mautic for Logstore

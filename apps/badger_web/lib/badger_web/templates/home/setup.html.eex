@@ -1,0 +1,29 @@
+<h3>SETUP</h3>
+<%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
+  <div class="form-row">
+    <div class="col">
+    <%= text_input f, :email, placeholder: "Site Name", class: "form-control" %>
+  </div>
+  <div class="col">
+    <%= password_input f, :pwd, placeholder: "Site Url", class: "form-control" %>
+  </div>
+  <%= submit "Create", class: "btn btn-primary", id: "submit_btn" %>
+  </div>
+<% end %>
+<table class='table table-sm' style='margin-top: 20px;'>
+  <thead>
+    <tr>
+      <th>Site Name</th>
+      <th>Site URL</th>
+      <th>Image Tag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Badger</td>
+      <td>http://hana:4000</td>
+      <td>TBD</td>
+    </tr>
+  </tbody>
+</table>
+

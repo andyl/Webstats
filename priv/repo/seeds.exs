@@ -3,14 +3,14 @@
 
 IO.puts "RELOADING LOGSTORE DATA"
 
-alias LogstoreData.Schema.{Site, View, Token}
-alias LogstoreData.Repo
+alias BadgerData.Schema.{Site, View, Token}
+alias BadgerData.Repo
 
 Repo.delete_all(Site)
 Repo.delete_all(View)
 Repo.delete_all(Token)
 
 Repo.insert(
-  %Site{name: "Logstore", url: "hana"}
+  %Site{name: "Badger", url: "hana"}
 )
 

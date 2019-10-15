@@ -1,4 +1,4 @@
-# Logstore Design
+# Badger Design
 
 ## ETAG Technique
 

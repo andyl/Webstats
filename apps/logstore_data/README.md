@@ -1,3 +1,0 @@
-# LogstoreData
-
-**TODO: Add description**

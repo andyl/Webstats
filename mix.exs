@@ -1,4 +1,4 @@
-defmodule Logstore.MixProject do
+defmodule Badger.MixProject do
   use Mix.Project
 
   def project do

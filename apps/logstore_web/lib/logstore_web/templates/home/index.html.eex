@@ -1,4 +1,0 @@
-<div class="jumbotron text-center" style='padding: 1em; margin-top: 30px; margin-bottom: 30px;'>
-  <h1><%= gettext "Welcome to %{name}!", name: "Logstore" %></h1>
-  Basic logstore - simple, fast, scalable
-</div>

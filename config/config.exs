@@ -1,18 +1,18 @@
 import Config
 
 # Configure Mix tasks and generators
-config :logstore_data,
-  ecto_repos: [LogstoreData.Repo]
+config :badger_data,
+  ecto_repos: [BadgerData.Repo]
 
-config :logstore_web,
+config :badger_web,
   generators: [context_app: false]
 
 # Configures the endpoint
-config :logstore_web, LogstoreWeb.Endpoint,
+config :badger_web, BadgerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "QT4EfpUZ5vHrbWF+6GGLI37kWRWKJgGq2cuN1nmKkhBQnZgpx8MJ9QosfHGlCVGe",
-  render_errors: [view: LogstoreWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: LogstoreWeb.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: BadgerWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: BadgerWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Sample configuration:
 #
@@ -34,7 +34,7 @@ config :phoenix, :json_library, Jason
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
 
-config :logstore_web, LogstoreWeb.Endpoint, live_view: [signing_salt: "asdf"]
+config :badger_web, BadgerWeb.Endpoint, live_view: [signing_salt: "asdf"]
 
 if Mix.env == :dev do
   config :mix_test_watch, clear: true

@@ -1,4 +1,4 @@
-# Logstore Devlog
+# Badger Devlog
 
 ## 2019 Oct 09 Wed
 
@@ -39,7 +39,7 @@
 
 - [ ] Define telemetry
 
-- [ ] Create logstore_rel
+- [ ] Create badger_rel
 - [ ] Export to influx
 
 - [ ] Create grafana graphs
@@ -49,4 +49,4 @@
 ## TBD
 
 - [ ] Update Casmacc
-- [ ] Swap mautic for Logstore
+- [ ] Swap mautic for Badger

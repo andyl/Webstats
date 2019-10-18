@@ -18,7 +18,7 @@ defmodule BadgerData.Schema.User do
 
   def changeset(user, attrs) do
     required_fields = [:name, :email]
-    optional_fields = [:pwd, :pwd_hash]
+    optional_fields = [:id, :pwd, :pwd_hash]
 
     user
     |> cast(attrs, required_fields ++ optional_fields)

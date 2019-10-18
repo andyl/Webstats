@@ -10,20 +10,22 @@
   <%= submit "Create", class: "btn btn-primary", id: "submit_btn" %>
   </div>
 <% end %>
+<small>
 <table class='table table-sm' style='margin-top: 20px;'>
   <thead>
     <tr>
-      <th>Site Name</th>
-      <th>Site URL</th>
+      <th>Site Name/URL</th>
       <th>Image Tag</th>
     </tr>
   </thead>
   <tbody>
+    <%= for site <- @sites do %>
     <tr>
-      <td>Badger</td>
-      <td>http://hana:4000</td>
-      <td>TBD</td>
+      <td><%= site.site_name %><br/><%= site.site_url %></td>
+      <td><code>&lt;img src='https://badger.casmacc.net/png0/<%= site.site_id %>?path=PATH'&gt;</code></td>
     </tr>
+  <% end %>
   </tbody>
 </table>
+</small>
 

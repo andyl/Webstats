@@ -1,7 +1,53 @@
 defmodule BadgerData.Api.User do
-  alias BadgerData.Schema.User
+  alias BadgerData.Schema.{User, Site, Token, View}
   alias BadgerData.Repo
   import Ecto.Query
+
+  # ----- user_one -----
+
+  def user_one do
+    Repo.get_by(User, id: 1) || 
+      User.changeset(%User{}, %{name: "aaa", email: "aaa", id: 1}) |> Repo.insert!()
+  end
+
+  # ----- queries -----
+
+  def sites(user_id) do
+    from(sit in Site,
+      where: sit.user_id == ^user_id,
+      order_by: sit.name,
+      select: %{
+        site_id: sit.id,
+        site_name: sit.name,
+        site_url: sit.url
+      }
+    )
+    |> Repo.all()
+  end
+
+  def views(user_id) do
+    from(sit in Site,
+      join: tok in Token,
+      on: tok.site_id == sit.id,
+      join: vie in View,
+      on: vie.token_id == tok.id,
+      where: sit.user_id == ^user_id,
+      order_by: [desc: vie.id],
+      limit: 100,
+      select: %{
+        site_id: sit.id,
+        site_name: sit.name,
+        site_url: sit.url,
+        token_id: tok.id,
+        token_path: tok.path,
+        view_id: vie.id,
+        view_cip: vie.client_ip,
+        view_cua: vie.client_ua,
+        view_date: vie.inserted_at
+      }
+    )
+    |> Repo.all()
+  end
 
   # ----- users -----
 

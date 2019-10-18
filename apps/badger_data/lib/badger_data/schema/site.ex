@@ -17,7 +17,7 @@ defmodule BadgerData.Schema.Site do
 
   def changeset(site, params \\ %{}) do
     required_fields = [:name]
-    optional_fields = [:url]
+    optional_fields = [:url, :user_id]
 
     site
     |> cast(params, required_fields ++ optional_fields)

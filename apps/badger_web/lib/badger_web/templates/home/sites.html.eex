@@ -1,2 +1,19 @@
 <h3>SITES</h3>
-Site text here.  <i class="fa fa-asterisk"></i>
+<small>
+<table class='table table-sm' style='margin-top: 20px;'>
+  <thead>
+    <tr>
+      <th>Site Name</th>
+      <th>Site URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for site <- @sites do %>
+    <tr>
+      <td><%= site.site_name %></td>
+      <td><%= site.site_url %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</small>

@@ -35,18 +35,25 @@
 - [x] Finish user registration / login 
 - [x] Merge to master and push
 
-- [ ] Site Crud (Add/Remove/Update)
+## 2019 Oct 18 Fri
+
+- [x] Update Casmacc
+
+- [ ] Add Seeds
+
+- [ ] Create badger_rel
+
+- [ ] RSH Deploy
+
+- [ ] Add tags to websites
+- [ ] Swap mautic for Badger
+
+## TBD
 
 - [ ] Define telemetry
 
-- [ ] Create badger_rel
 - [ ] Export to influx
 
 - [ ] Create grafana graphs
 
-- [ ] Add image tags to websites
-
-## TBD
-
-- [ ] Update Casmacc
-- [ ] Swap mautic for Badger
+- [ ] Site Crud (Add/Remove/Update)

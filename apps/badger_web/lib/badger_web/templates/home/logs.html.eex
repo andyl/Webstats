@@ -1,2 +1,27 @@
 <h3>LOGS</h3>
-Log text here.  <i class="fa fa-asterisk"></i>
+<small>
+<table class='table table-sm' style='margin-top: 20px;'>
+  <thead>
+    <tr>
+      <th>Visit</th>
+      <th>Site</th>
+      <th>Path</th>
+      <th>IP</th>
+      <th>UA</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for view <- @views do %>
+    <tr>
+      <td><%= view.view_id %></td>
+      <td><%= view.site_name %></td>
+      <td><%= view.token_path %></td>
+      <td><%= view.view_cip %></td>
+      <td><%= view.view_cua %></td>
+      <td><%= view.view_date %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</small>

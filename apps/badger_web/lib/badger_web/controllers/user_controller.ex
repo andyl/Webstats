@@ -18,9 +18,6 @@ defmodule BadgerWeb.UserController do
 
   def new(conn, _params) do
     changeset = Api.User.user_changeset(%Schema.User{})
-    IO.inspect "---------------------------------------"
-    IO.inspect changeset
-    IO.inspect "---------------------------------------"
     render(conn, "new.html", changeset: changeset)
   end
 

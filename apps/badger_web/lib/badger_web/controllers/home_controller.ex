@@ -1,6 +1,8 @@
 defmodule BadgerWeb.HomeController do
   use BadgerWeb, :controller
 
+  alias BadgerData.Api
+
   plug :authenticate when action in [:sites, :logs, :users]
 
   def index(conn, _params) do
@@ -12,11 +14,17 @@ defmodule BadgerWeb.HomeController do
   end
 
   def logs(conn, _params) do
-    render(conn, "logs.html")
+    userid = userid(conn)
+    conn
+    |> assign(:views, Api.User.views(userid))
+    |> render("logs.html")
   end
 
   def sites(conn, _params) do
-    render(conn, "sites.html")
+    userid = userid(conn)
+    conn
+    |> assign(:sites, Api.User.sites(userid))
+    |> render("sites.html")
   end
 
   def views(conn, _params) do
@@ -24,7 +32,10 @@ defmodule BadgerWeb.HomeController do
   end
 
   def setup(conn, _params) do
-    render(conn, "setup.html")
+    userid = userid(conn)
+    conn
+    |> assign(:sites, Api.User.sites(userid))
+    |> render("setup.html")
   end
 
   def data(conn, _params) do
@@ -54,7 +65,7 @@ defmodule BadgerWeb.HomeController do
     end
   end
 
-  # defp userid(conn) do
-  #   conn.assigns.current_user.id
-  # end
+  defp userid(conn) do
+    conn.assigns.current_user.id
+  end
 end

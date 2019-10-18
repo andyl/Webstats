@@ -10,8 +10,6 @@ config :badger_data, BadgerData.Repo,
 
 config :logger, level: :error
 
-# We don't run a server during test. If one is required,
-# you can enable the server option below.
 config :badger_web, BadgerWeb.Endpoint,
   http: [port: 4002],
   server: false

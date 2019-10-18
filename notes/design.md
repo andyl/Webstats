@@ -1,5 +1,7 @@
 # Badger Design
 
+Badge Generation
+
 ## ETAG Technique
 
 http://lucb1e.com/rp/cookielesscookies/

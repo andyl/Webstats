@@ -15,12 +15,15 @@ defmodule BadgerData.Api.Site do
       select: s.id,
       order_by: s.id,
       limit: 1
-    ) |> Repo.one()
+    )
+    |> Repo.one()
   end
 
   def apphost do
     host = System.get_env("SYSNAME", "localhost")
-    Repo.get_by(Site, name: host) || create(%{name: host})
+    uid  = BadgerData.Api.User.user_one().id
+
+    Repo.get_by(Site, name: host, user_id: uid) || create(%{name: host, user_id: uid})
   end
 
   def apphost_id do

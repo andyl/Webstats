@@ -35,6 +35,7 @@ defmodule BadgerData.Api.SiteTest do
       assert count(Schema.Site) == 0
       Api.Site.apphost()
       Api.Site.apphost()
+      Api.Site.apphost()
       assert count(Schema.Site) == 1
     end
 

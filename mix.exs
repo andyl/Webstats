@@ -16,10 +16,9 @@ defmodule Badger.MixProject do
 
   defp deps do
     [
-      # ----- development and test
       {:mix_test_watch, "~> 0.8", only: :dev, runtime: false},
-      # ----- utilities
-      {:version_tasks, "~> 0.11.3"}
+      {:version_tasks, "~> 0.11.3"},
+      {:app_util, path: "~/src/app_util"}
     ]
   end
 

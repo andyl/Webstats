@@ -22,7 +22,7 @@
     <%= for site <- @sites do %>
     <tr>
       <td><%= site.site_name %><br/><%= site.site_url %></td>
-      <td><code>&lt;img src='https://badger.casmacc.net/png0/<%= site.site_id %>?path=PATH'&gt;</code></td>
+      <td><code>&lt;img src='https://badger.casmacc.net/pngF/<%= site.site_id %>?path={{ site.url }}'&gt;</code></td>
     </tr>
   <% end %>
   </tbody>

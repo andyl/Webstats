@@ -39,21 +39,21 @@
 
 - [x] Update Casmacc
 
-- [ ] Add Seeds
+## 2019 Oct 21 Mon
 
-- [ ] Create badger_rel
-
-- [ ] RSH Deploy
-
-- [ ] Add tags to websites
-- [ ] Swap mautic for Badger
+- [x] Add Seeds
+- [x] Create badger_rel
+- [x] RSH Deploy
+- [x] Swap mautic for Badger
+- [x] Add tags to websites
 
 ## TBD
 
 - [ ] Define telemetry
-
 - [ ] Export to influx
-
 - [ ] Create grafana graphs
 
 - [ ] Site Crud (Add/Remove/Update)
+
+- [ ] Add badge generation & serving
+- [ ] Add image upload & serving

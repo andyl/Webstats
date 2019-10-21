@@ -5,15 +5,10 @@ Badge Generation
 ## ETAG Technique
 
 http://lucb1e.com/rp/cookielesscookies/
-
 https://blog.sundaycoding.com/blog/2017/03/28/etag-tracking-and-elixir/
-
 https://github.com/adamniedzielski/etag_tracker
-
 https://segment.com/docs/sources/server/pixel-tracking-api/
-
 https://support.shopgate.com/hc/en-us/articles/220385507-Converting-a-tracking-pixel-from-HTML-to-JavaScript
-
 https://alchemist.camp/episodes/event-tracking-with-keen.io
 
 ## Elements
@@ -39,18 +34,12 @@ View
 - CIP
 - CUA
 
-## Release
-
-- Dockerfile
-- Docker Compose
-- Telemetry -> Influx
-- Installation
-- Database Backup/Restore
-- Database Migrations
-- Release
-
 ## Elixir Libraries
 
 | uainspector | https://github.com/elixir-inspector/ua_inspector |
 | geolix      | https://github.com/elixir-geolix/geolix          |
 
+## Stats
+
+- # uniques
+- time on site

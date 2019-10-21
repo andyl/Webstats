@@ -1,4 +1,4 @@
 # Badger
 
-**TODO: Add description**
+Badge Server
 

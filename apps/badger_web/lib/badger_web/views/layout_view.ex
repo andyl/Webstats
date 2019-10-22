@@ -30,7 +30,7 @@ defmodule BadgerWeb.LayoutView do
     hostid = BadgerData.Api.Site.apphost_id()
     r_path = conn.request_path
     """
-    <img src="/png0/#{hostid}?path=#{r_path}"></img>
+    <img src="/png0/#{hostid}?path=#{r_path}">
     """ |> Phoenix.HTML.raw()
   end
 end

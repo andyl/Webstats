@@ -21,8 +21,18 @@ Repo.insert(
       %Site{name: "jobex_sing", url: "http://sing:5070"},
       %Site{name: "bugmark_net", url: "https://bugmark.net"},
       %Site{name: "ledemo_casmacc_net", url: "https://live-editable.casmacc.net"},
-      %Site{name: "connorleak.com", url: "http://connorleak.com"},
-      %Site{name: "mvcondo.com", url: "http://mesa-verde-condo.com"},
+      %Site{name: "connorleak_com", url: "http://connorleak.com"},
+      %Site{name: "mvcondo_com", url: "http://mesa-verde-condo.com"},
+
+      %Site{name: "casmacc_io_pro", url: "http://casmacc.io"},
+      %Site{name: "casmacc_io_dev", url: "http://dixy:1313"},
+
+      %Site{name: "zipwork_io_pro", url: "http://zipwork.io"},
+      %Site{name: "zipwork_io_dev", url: "http://dixy:1313"},
+
+      %Site{name: "starvan_io_pro", url: "http://zipwork.io"},
+      %Site{name: "starvan_io_dev", url: "http://dixy:1313"},
+
       %Site{name: "badger_readme", url: "https://github.com/andyl/badger"},
       %Site{name: "feedex_readme", url: "https://github.com/andyl/feedex"},
       %Site{name: "jobex_readme", url: "https://github.com/andyl/jobex"}

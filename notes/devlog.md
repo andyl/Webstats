@@ -51,6 +51,7 @@
 
 - [ ] Define telemetry
 - [ ] Export to influx
+- [ ] Add a script to create influx database
 - [ ] Create grafana graphs
 
 - [ ] Site Crud (Add/Remove/Update)

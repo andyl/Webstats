@@ -47,10 +47,15 @@
 - [x] Swap mautic for Badger
 - [x] Add tags to websites
 
+## 2020 Jun 16 Tue
+
+- [x] Add design for downstream systems
+
+- [ ] Update db tables
+- [ ] Create a sync app
+
 ## TBD
 
-- [ ] Define telemetry
-- [ ] Export to influx
 - [ ] Add a script to create influx database
 - [ ] Create grafana graphs
 

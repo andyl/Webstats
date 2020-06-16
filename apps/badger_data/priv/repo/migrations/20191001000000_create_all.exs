@@ -16,6 +16,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       add :user_id, references(:users, on_delete: :delete_all)
       add :name, :string
       add :url, :string
+      add :type, :string
       timestamps()
     end
 
@@ -32,6 +33,28 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       add :token_id, references(:tokens, on_delete: :delete_all)
       add :client_ip, :string
       add :client_ua, :string
+      timestamps()
+    end
+
+    create table(:downstreams) do
+      add :user_id, references(:users, on_delete: :delete_all)
+      add :name, :string
+      add :type, :string
+      add :address, :string
+      add :credentials, :string
+      add :status, :string
+      add :last_push_at, :utc_datetime
+      add :cursor, :integer
+      timestamps()
+    end
+
+    create table(:exports) do
+      add :downstream_id, references(:downstreams, on_delete: :delete_all)
+      add :starting_record, :integer
+      add :ending_record, :integer
+      add :num_records, :integer
+      add :started_at, :utc_datetime
+      add :finished_at, :utc_datetime
       timestamps()
     end
   end

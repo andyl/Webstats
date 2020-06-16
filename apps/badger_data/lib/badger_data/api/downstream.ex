@@ -43,20 +43,7 @@ defmodule BadgerData.Api.User do
         view_id: vie.id,
         view_cip: vie.client_ip,
         view_cua: vie.client_ua,
-        view_date: vie.inserted_av
-      }
-    )
-    |> Repo.all()
-  end
-
-  def downstreams(user_id) do
-    from(dstream in Downstream,
-      where: dstream.user_id == ^user_id,
-      order_by: dstream.name,
-      select: %{
-        downstream_id: dstream.id,
-        downstream_name: dstream.name,
-        downstream_url: dstream.url
+        view_date: vie.inserted_at
       }
     )
     |> Repo.all()

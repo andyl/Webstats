@@ -59,7 +59,12 @@ pulling from the downstream systems.
 
 ## Tables
 
+User
+- name
+- pass
+
 Site
+- user_id
 - name
 - url
 
@@ -83,6 +88,7 @@ View
 - CUA
 
 Downstream
+- user_id
 - name
 - type
 - address
@@ -90,7 +96,7 @@ Downstream
 - last_push_at
 - cursor
 
-Push
+Export
 - downstream_id
 - start_at
 - finish_at

@@ -1,18 +1,18 @@
 {
-  "apps/logstore_data/lib/*.ex": {
-    "alternate": "apps/logstore_data/test/{}_test.exs",
+  "apps/badger_data/lib/*.ex": {
+    "alternate": "apps/badger_data/test/{}_test.exs",
     "type": "src"
   },
-  "apps/logstore_data/test/*_test.exs": {
-    "alternate": "apps/logstore_data/lib/{}.ex",
+  "apps/badger_data/test/*_test.exs": {
+    "alternate": "apps/badger_data/lib/{}.ex",
     "type": "src"
   },
-  "apps/logstore_web/lib/*.ex": {
-    "alternate": "apps/logstore_web/test/{}_test.exs",
+  "apps/badger_web/lib/*.ex": {
+    "alternate": "apps/badger_web/test/{}_test.exs",
     "type": "src"
   },
-  "apps/logstore_web/test/*_test.exs": {
-    "alternate": "apps/logstore_web/lib/{}.ex",
+  "apps/badger_web/test/*_test.exs": {
+    "alternate": "apps/badger_web/lib/{}.ex",
     "type": "src"
   }
 }

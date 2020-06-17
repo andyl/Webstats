@@ -1,111 +1,57 @@
-defmodule BadgerData.Api.User do
-  alias BadgerData.Schema.{User, Site, Token, View}
+defmodule BadgerData.Api.Downstream do
+  alias BadgerData.Schema.{Downstream, Export}
   alias BadgerData.Repo
   import Ecto.Query
 
   # ----- user_one -----
 
-  def user_one do
-    Repo.get_by(User, id: 1) || 
-      User.changeset(%User{}, %{name: "aaa", email: "aaa", id: 1}) |> Repo.insert!()
+  def downstream_one do
+    Repo.get_by(Downstream, id: 1) || 
+      Downstream.changeset(%Downstream{}, %{name: "aaa"}) |> Repo.insert!()
   end
 
   # ----- queries -----
 
-  def sites(user_id) do
-    from(sit in Site,
-      where: sit.user_id == ^user_id,
-      order_by: sit.name,
+  def exports(downstream_id) do
+    from(export in Export,
+      where: export.downstream_id == ^downstream_id,
+      order_by: export.id,
       select: %{
-        site_id: sit.id,
-        site_name: sit.name,
-        site_url: sit.url
+        export_id: export.id,
+        export_name: export.name,
+        export_url: export.url
       }
     )
     |> Repo.all()
   end
 
-  def views(user_id) do
-    from(sit in Site,
-      join: tok in Token,
-      on: tok.site_id == sit.id,
-      join: vie in View,
-      on: vie.token_id == tok.id,
-      where: sit.user_id == ^user_id,
-      order_by: [desc: vie.id],
-      limit: 100,
-      select: %{
-        site_id: sit.id,
-        site_name: sit.name,
-        site_url: sit.url,
-        token_id: tok.id,
-        token_path: tok.path,
-        view_id: vie.id,
-        view_cip: vie.client_ip,
-        view_cua: vie.client_ua,
-        view_date: vie.inserted_at
-      }
-    )
-    |> Repo.all()
+  # ----- downstreams -----
+
+  def downstream_list do
+    Repo.all(Downstream)
   end
 
-  # ----- users -----
-
-  def user_list do
-    Repo.all(User)
+  def downstream_get(downstream_id) do
+    Repo.get(Downstream, downstream_id)
   end
 
-  def user_get(user_id) do
-    Repo.get(User, user_id)
+  def downstream_get_by(params) do
+    Repo.get_by(Downstream, params)
   end
 
-  def user_get_by(params) do
-    Repo.get_by(User, params)
-  end
-
-  def user_get_by_email(email) do
-    from(usr in User, where: fragment("email ilike ?", ^email))
-    |> Repo.one()
-  end
-
-  def user_add(opts) do
-    %User{}
-    |> User.changeset(opts)
+  def downstream_add(opts) do
+    %Downstream{}
+    |> Downstream.changeset(opts)
     |> Repo.insert()
   end
 
-  def user_signup(opts) do
-    %User{}
-    |> User.signup_changeset(opts)
-    |> Repo.insert()
+  def downstream_changeset(%Downstream{} = downstream) do
+    Downstream.changeset(downstream, %{})
   end
 
-  def user_changeset(%User{} = user) do
-    User.changeset(user, %{})
+  def downstream_change(_downstream_id) do
   end
 
-  def user_change(_user_id) do
-  end
-
-  def user_change_pwd(_user_id, _newpwd) do
-  end
-
-  def user_delete(_user_id) do
-  end
-
-  def user_auth_by_email_and_pwd(email, pwd) do
-    user = user_get_by_email(email)
-
-    cond do
-      user && Pbkdf2.verify_pass(pwd, user.pwd_hash) ->
-        {:ok, user}
-
-      user ->
-        {:error, :unauthorized}
-
-      true ->
-        Pbkdf2.no_user_verify()
-        {:error, :not_found}
-    end
+  def downstream_delete(_downstream_id) do
   end
 end

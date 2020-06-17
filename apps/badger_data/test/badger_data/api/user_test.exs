@@ -5,6 +5,11 @@ defmodule BadgerData.Api.UserTest do
   alias BadgerData.Api.User
   alias BadgerData.Schema
 
+  setup do
+    Repo.delete_all(Schema.User)
+    :ok 
+  end
+
   describe "#user_add" do
     test "valid user" do
       attr = %{name: "asdf", email: "qwer.com", pwd: "bingbing"}

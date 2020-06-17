@@ -4,6 +4,11 @@ defmodule BadgerData.Schema.UserTest do
 
   alias BadgerData.Schema.User
 
+  setup do
+    Repo.delete_all(User)
+    :ok 
+  end
+
   describe "changesets" do
     test "accepts valid input" do
       tmap = %User{}

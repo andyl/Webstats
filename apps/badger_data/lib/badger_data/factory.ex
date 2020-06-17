@@ -1,6 +1,6 @@
 defmodule BadgerData.Factory do
   use ExMachina.Ecto, repo: BadgerData.Repo
-  alias BadgerData.Schema.{User, View, Site, Token}
+  alias BadgerData.Schema.{User, View, Site, Token, Downstream, Export}
 
   def site_factory do
     %Site{
@@ -16,6 +16,23 @@ defmodule BadgerData.Factory do
   def token_factory do
     %Token{
       key: "asdf"
+    }
+  end
+
+  def downstream_factory do
+    %Downstream{
+      name: sequence(:name, &"downstream_#{&1}"),
+      type: "influxdb",
+      address: "localhost:3050", 
+      credentials: "{'user': 'admin', 'pass': 'admin'}"
+    }
+  end
+
+  def export_factory do
+    %Export{
+      starting_record: 10,
+      ending_record: 15,
+      num_records: 4
     }
   end
 

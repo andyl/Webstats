@@ -1,5 +1,5 @@
 defmodule BadgerData.Api.User do
-  alias BadgerData.Schema.{User, Site, Token, View}
+  alias BadgerData.Schema.{User, Site, Token, View, Downstream}
   alias BadgerData.Repo
   import Ecto.Query
 

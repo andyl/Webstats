@@ -43,7 +43,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       add :address, :string
       add :credentials, :string
       add :status, :string
-      add :last_push_at, :utc_datetime
+      add :last_export_at, :utc_datetime
       add :cursor, :integer
       timestamps()
     end

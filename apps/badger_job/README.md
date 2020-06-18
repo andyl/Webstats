@@ -1,4 +1,4 @@
-# FeedexJob
+# BadgerJob
 
 A job runner, primarily to run RSS sync jobs.
 

@@ -3,8 +3,10 @@ defmodule BadgerData.Factory do
   alias BadgerData.Schema.{User, View, Site, Token, Downstream, Export}
 
   def site_factory do
+    seq_name = sequence(:name, &"Site_#{&1}")
     %Site{
-      name: "Site1"
+      name: seq_name,
+      pubid: Site.pubid_for_name(seq_name)
     }
   end
 

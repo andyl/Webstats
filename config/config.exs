@@ -4,6 +4,10 @@ import Config
 config :badger_data,
   ecto_repos: [BadgerData.Repo]
 
+config :badger_data, Oban,
+  repo: BadgerData.Repo,
+  queues: [default: 10, events: 50, media: 20]
+
 config :badger_web,
   generators: [context_app: false]
 

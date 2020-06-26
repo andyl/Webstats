@@ -6,8 +6,9 @@ defmodule BadgerData.Schema.Site do
   import Ecto.Changeset
 
   schema "sites" do
-    field :name, :string
-    field :url,  :string
+    field :name,  :string
+    field :url,   :string
+    field :pubid, :string
 
     belongs_to :user, BadgerData.Schema.User
     has_many :tokens, BadgerData.Schema.Token
@@ -16,15 +17,45 @@ defmodule BadgerData.Schema.Site do
   end
 
   def changeset(site, params \\ %{}) do
-    required_fields = [:name]
+    required_fields = [:name, :pubid]
     optional_fields = [:url, :user_id]
 
     site
     |> cast(params, required_fields ++ optional_fields)
+    |> unique_constraint(:name)
+    |> set_pubid_if_empty()
     |> validate_required(required_fields)
   end
 
   def new_changeset do
     changeset(%BadgerData.Schema.Site{}, %{})
+  end
+
+  def pubid_for_name(name) do
+    System.monotonic_time(:nanosecond) 
+    |> Integer.to_string(16)
+    |> concat(name)
+    |> :erlang.md5()
+    |> Base.encode16()
+    |> String.slice(-6..-1) 
+    |> String.downcase()
+  end
+
+  defp set_pubid_if_empty(changeset) do
+    case get_change(changeset, :pubid) do
+      nil -> put_change(changeset, :pubid, pubid_for_changeset(changeset))
+      ""  -> put_change(changeset, :pubid, pubid_for_changeset(changeset))
+      _   -> changeset
+    end
+  end
+
+  defp pubid_for_changeset(changeset) do
+    changeset
+    |> get_change(:name)
+    |> pubid_for_name()
+  end
+
+  defp concat(string1, string2) do
+    string1 <> string2
   end
 end

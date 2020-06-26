@@ -8,6 +8,8 @@ config :badger_data, BadgerData.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+config :badger_data, Oban, crontab: false, queues: false, plugins: false
+
 config :logger, level: :error
 
 config :badger_web, BadgerWeb.Endpoint,

@@ -18,6 +18,7 @@ defmodule BadgerData.Api.User do
       order_by: sit.name,
       select: %{
         site_id: sit.id,
+        site_pubid: sit.pubid,
         site_name: sit.name,
         site_url: sit.url
       }
@@ -43,7 +44,7 @@ defmodule BadgerData.Api.User do
         view_id: vie.id,
         view_cip: vie.client_ip,
         view_cua: vie.client_ua,
-        view_date: vie.inserted_av
+        view_date: vie.inserted_at
       }
     )
     |> Repo.all()

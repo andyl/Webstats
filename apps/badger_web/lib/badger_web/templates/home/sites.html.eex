@@ -5,6 +5,7 @@
     <tr>
       <th>Site Name</th>
       <th>Site URL</th>
+      <th>Pixel</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,9 @@
     <tr>
       <td><%= site.site_name %></td>
       <td><%= site.site_url %></td>
+      <td>
+        /png0/<%= site.site_pubid %>?path=/test
+      </td>
     </tr>
   <% end %>
   </tbody>

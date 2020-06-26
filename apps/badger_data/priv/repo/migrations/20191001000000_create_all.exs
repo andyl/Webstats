@@ -17,6 +17,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       add :name, :string
       add :url, :string
       add :type, :string
+      add :pubid, :string
       timestamps()
     end
 

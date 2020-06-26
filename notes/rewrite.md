@@ -2,13 +2,18 @@
 
 ## Design
 
-- [ ] Log to Postgres - Forget Influx
+- [x] Log to Postgres 
+- [ ] Export to Downstreams (Influx, NATS, Kafka)
+
+## Notes
+
+- Bootstrap Native: https://dashbit.co/blog/using-bootstrap-native-with-live-view
 
 ## Features
 
 - [ ] Telemetry & Influx Integration
-- [ ] Use Tailwind CSS
-- [ ] Runtime configuration (Influx Address)
+- [ ] Use Bootstrap Native
+- [ ] Runtime configuration (Influx Address) from SOPS
 - [ ] Influx Status
 - [ ] Latest Phoenix
 - [ ] Valim Auth

@@ -51,8 +51,10 @@
 
 - [x] Add design for downstream systems
 
-- [ ] Update db tables
-- [ ] Create a sync app
+## 2020 Jun 26 Fri
+
+- [x] Learn psql
+- [x] Update db tables
 
 ## TBD
 

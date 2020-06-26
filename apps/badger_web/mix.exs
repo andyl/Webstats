@@ -39,11 +39,11 @@ defmodule BadgerWeb.MixProject do
       # ----- phoenix backend
       {:phoenix, "~> 1.4.6"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_html, "~> 2.11"},
+      {:phoenix_html, "~> 2.13"},
       {:phoenix_pubsub, "~> 1.1"},
-      {:phoenix_ecto, "~> 4.0.0"},
+      {:phoenix_ecto, "~> 4.1.0"},
       # ----- phoenix view helpers
-      {:phoenix_active_link, "~> 0.2.1"},
+      {:phoenix_active_link, "~> 0.3.0"},
       {:phoenix_live_view, "~> 0.3.1"},
       # {:phoenix_live_editable, path: "~/lib/phoenix_live_editable"},
       # ----- util

@@ -6,8 +6,8 @@ defmodule BadgerData.Api.User do
   # ----- user_one -----
 
   def user_one do
-    Repo.get_by(User, id: 1) || 
-      User.changeset(%User{}, %{name: "aaa", email: "aaa", id: 1}) |> Repo.insert!()
+    Repo.get_by(User, id: 1) || raise("User ONE not created - run 'mix ecto.setup'")
+    # User.changeset(%User{}, %{name: "aaa", email: "aaa", password: "aaa", id: 1}) |> Repo.insert!()
   end
 
   # ----- queries -----

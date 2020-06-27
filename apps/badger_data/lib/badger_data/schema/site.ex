@@ -6,9 +6,9 @@ defmodule BadgerData.Schema.Site do
   import Ecto.Changeset
 
   schema "sites" do
-    field :name,  :string
-    field :url,   :string
-    field :pubid, :string
+    field :name, :string
+    field :url,  :string
+    field :tag,  :string
 
     belongs_to :user, BadgerData.Schema.User
     has_many :tokens, BadgerData.Schema.Token
@@ -17,13 +17,14 @@ defmodule BadgerData.Schema.Site do
   end
 
   def changeset(site, params \\ %{}) do
-    required_fields = [:name, :pubid]
+    required_fields = [:name, :tag]
     optional_fields = [:url, :user_id]
 
     site
     |> cast(params, required_fields ++ optional_fields)
     |> unique_constraint(:name)
-    |> set_pubid_if_empty()
+    |> unique_constraint(:tag)
+    |> set_tag_if_empty()
     |> validate_required(required_fields)
   end
 
@@ -31,7 +32,7 @@ defmodule BadgerData.Schema.Site do
     changeset(%BadgerData.Schema.Site{}, %{})
   end
 
-  def pubid_for_name(name) do
+  def tag_for_name(name) do
     System.monotonic_time(:nanosecond) 
     |> Integer.to_string(16)
     |> concat(name)
@@ -41,18 +42,18 @@ defmodule BadgerData.Schema.Site do
     |> String.downcase()
   end
 
-  defp set_pubid_if_empty(changeset) do
-    case get_change(changeset, :pubid) do
-      nil -> put_change(changeset, :pubid, pubid_for_changeset(changeset))
-      ""  -> put_change(changeset, :pubid, pubid_for_changeset(changeset))
+  defp set_tag_if_empty(changeset) do
+    case get_change(changeset, :tag) do
+      nil -> put_change(changeset, :tag, tag_for_changeset(changeset))
+      ""  -> put_change(changeset, :tag, tag_for_changeset(changeset))
       _   -> changeset
     end
   end
 
-  defp pubid_for_changeset(changeset) do
+  defp tag_for_changeset(changeset) do
     changeset
     |> get_change(:name)
-    |> pubid_for_name()
+    |> tag_for_name()
   end
 
   defp concat(string1, string2) do

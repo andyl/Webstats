@@ -13,9 +13,20 @@ defmodule BadgerWeb.EtagController do
   # ---------------------------------------
 
   defp send_img(conn, filetype, params) do
+    IO.inspect("-------------------------")
+    IO.inspect("SEND IMG")
+    IO.inspect("-------------------------")
     ipath = pixel_filepath(filetype)
     token = find_or_create_token(conn, params) 
     ftype = String.split(ipath, ".") |> List.last()
+
+    IO.inspect("-------------------------")
+    IO.inspect("SEND IMG")
+    IO.inspect ipath
+    IO.inspect params
+    IO.inspect token
+    IO.inspect ftype
+    IO.inspect("-------------------------")
 
     record_view(token, conn, params)
 

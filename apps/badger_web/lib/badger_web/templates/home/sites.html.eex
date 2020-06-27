@@ -3,6 +3,7 @@
 <table class='table table-sm' style='margin-top: 20px;'>
   <thead>
     <tr>
+      <th>Site ID</th>
       <th>Site Name</th>
       <th>Site URL</th>
       <th>Pixel</th>
@@ -11,10 +12,11 @@
   <tbody>
     <%= for site <- @sites do %>
     <tr>
+      <td><%= site.site_id %></td>
       <td><%= site.site_name %></td>
       <td><%= site.site_url %></td>
       <td>
-        /png0/<%= site.site_pubid %>?path=/test
+        /png0/<%= site.site_tag %>?path=/test
       </td>
     </tr>
   <% end %>

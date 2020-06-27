@@ -33,9 +33,9 @@ defmodule BadgerData.Schema.SiteTest do
     end
   end
 
-  describe "pubid_for_name" do
+  describe "tag_for_name" do
     test "returning a string" do
-      assert Site.pubid_for_name("asdf")
+      assert Site.tag_for_name("asdf")
     end
   end
 
@@ -63,8 +63,8 @@ defmodule BadgerData.Schema.SiteTest do
       assert trak = insert(:site, %{name: altname})
       assert count(Site) == 1
       assert trak.name == altname
-      assert trak.pubid 
-      refute trak.pubid == ""
+      assert trak.tag
+      refute trak.tag == ""
     end
   end
 

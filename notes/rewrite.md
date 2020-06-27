@@ -23,15 +23,13 @@
 ## Next Steps
 
 BackEnd:
-- [ ] Read structured logging
-- [ ] Add App Telemetry(?)
-- [ ] Expand Seeds for all Websites and READMEs
-- [ ] Add custom images to backend
-- [ ] Configure Grafana to pull from Postgres
+- [ ] Get Oban installed (into the BadgerData app...)
+- [ ] Write export job for Influx (
+- [ ] Add influx downstream to seed data
 
 UI:
 - [ ] Create a dummy app
-- [ ] Convert dummy to use Tailwind
+- [ ] Convert dummy to use Bootstrap Native
 - [ ] Finish PragStudio course
 - [ ] Practice with Valim Auth
 - [ ] Practice with Dashboard Config

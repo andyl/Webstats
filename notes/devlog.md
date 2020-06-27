@@ -55,13 +55,14 @@
 
 - [x] Learn psql
 - [x] Update db tables
+- [x] Upgrade dependencies
 
 ## TBD
 
-- [ ] Add a script to create influx database
-- [ ] Create grafana graphs
+- [ ] Use code to record views in badger application
+- [ ] Handle unknown_code 
+- [ ] Record views in badger application
 
-- [ ] Site Crud (Add/Remove/Update)
-
-- [ ] Add badge generation & serving
-- [ ] Add image upload & serving
+- [ ] Get Oban installed
+- [ ] Write influx exporter
+- [ ] Add influx downstream to seed data

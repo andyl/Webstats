@@ -7,16 +7,12 @@ alias BadgerData.Schema.{User, Site, View, Token}
 alias BadgerData.Repo
 
 defmodule Lcl do
-  def sitefor(name, url, pubid) do
+  def sitefor(name, url) do
     %Site{
       url: url,
       name: name,
-      pubid: pubid
+      tag: Site.tag_for_name(name)
     }
-  end
-
-  def sitefor(name, url) do
-    sitefor(name, url,  Site.pubid_for_name(name))
   end
 end
 
@@ -27,12 +23,13 @@ Repo.delete_all(Token)
 
 Repo.insert(
   %User{ 
+    id: 1, 
     name: "aaa",
     email: "aaa",
     pwd_hash: User.pwd_hash("aaa"),
     sites: [
-      Lcl.sitefor("badger_server",      "http://localhost", "000000"), 
-      Lcl.sitefor("unknown_server",     "http://tbd",       "xxxxxx"), 
+      Lcl.sitefor("badger_host",        "http://localhost"), 
+      Lcl.sitefor("badger_404",         "http://tbd"), 
       Lcl.sitefor("feedex_casmacc_net", "https://feedex.casmacc.net"),
       Lcl.sitefor("jobex_sing",         "http://sing:5070"),
       Lcl.sitefor("bugmark_net",        "https://bugmark.net"),

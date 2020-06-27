@@ -6,7 +6,7 @@ defmodule BadgerData.Factory do
     seq_name = sequence(:name, &"Site_#{&1}")
     %Site{
       name: seq_name,
-      pubid: Site.pubid_for_name(seq_name)
+      tag: Site.tag_for_name(seq_name)
     }
   end
 

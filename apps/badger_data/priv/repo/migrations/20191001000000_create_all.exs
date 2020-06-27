@@ -2,6 +2,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
   use Ecto.Migration
 
   def change do
+    # for user sessions
     create table(:users) do
       add(:name, :string)
       add(:email, :string)
@@ -12,15 +13,20 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       timestamps(type: :utc_datetime)
     end
 
+    # one record for each site
     create table(:sites) do
       add :user_id, references(:users, on_delete: :delete_all)
       add :name, :string
       add :url, :string
       add :type, :string
-      add :pubid, :string
+      add :tag, :string
       timestamps()
     end
 
+    create index(:sites, [:name])
+    create index(:sites, [:tag])
+
+    # holds etag tokens
     create table(:tokens) do
       add :site_id, references(:sites, on_delete: :delete_all)
       add :key, :string
@@ -30,6 +36,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
 
     create index(:tokens, [:key])
 
+    # holds a record for each view
     create table(:views) do
       add :token_id, references(:tokens, on_delete: :delete_all)
       add :client_ip, :string
@@ -37,6 +44,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       timestamps()
     end
 
+    # downstream systems (influx, nats, kafka, rabbitmq, etc.)
     create table(:downstreams) do
       add :user_id, references(:users, on_delete: :delete_all)
       add :name, :string
@@ -49,6 +57,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       timestamps()
     end
 
+    # one record for each export job
     create table(:exports) do
       add :downstream_id, references(:downstreams, on_delete: :delete_all)
       add :starting_record, :integer

@@ -6,8 +6,8 @@ defmodule BadgerData.Api.User do
   # ----- user_one -----
 
   def user_one do
-    Repo.get_by(User, id: 1) || raise("User ONE not created - run 'mix ecto.setup'")
-    # User.changeset(%User{}, %{name: "aaa", email: "aaa", password: "aaa", id: 1}) |> Repo.insert!()
+    Repo.get_by(User, id: 1) || 
+      User.changeset(%User{}, %{name: "aaa", email: "aaa", pwd_hash: User.pwd_hash("aaa"), id: 1}) |> Repo.insert!()
   end
 
   # ----- queries -----
@@ -15,10 +15,10 @@ defmodule BadgerData.Api.User do
   def sites(user_id) do
     from(sit in Site,
       where: sit.user_id == ^user_id,
-      order_by: sit.name,
+      order_by: sit.id,
       select: %{
         site_id: sit.id,
-        site_pubid: sit.pubid,
+        site_tag: sit.tag,
         site_name: sit.name,
         site_url: sit.url
       }

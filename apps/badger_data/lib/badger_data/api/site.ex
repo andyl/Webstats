@@ -4,6 +4,31 @@ defmodule BadgerData.Api.Site do
 
   import Ecto.Query
 
+  # ----- defined sites -----
+
+  defp new_site(name, url) do
+    Site.changeset(
+      %Site{},
+      %Site{
+        url: url,
+        name: name,
+        tag: Site.tag_for_name(name)
+      }
+    )
+  end
+
+  def badger_host do
+    Repo.get_by(Site, name: "badger_host") || 
+      new_site("badger_host", "http://localhost") |> Repo.insert!()
+  end
+
+  def badger_404 do
+    Repo.get_by(Site, name: "badger_404") || 
+      new_site("badger_404", "http://tbd") |> Repo.insert!()
+  end
+
+  # ----- queries -----
+  
   def create(opts \\ %{}) do
     Site.changeset(%Site{}, opts)
     |> Repo.insert!()

@@ -33,12 +33,12 @@ defmodule BadgerWeb.Router do
     resources "/users", UserController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
-    get "/png0/:site_id", EtagController, :png0
-    get "/gif0/:site_id", EtagController, :gif0
-    get "/jpg0/:site_id", EtagController, :jpg0
-    get "/pngF/:site_id", EtagController, :pngF
-    get "/gifF/:site_id", EtagController, :gifF
-    get "/jpgF/:site_id", EtagController, :jpgF
+    get "/png0/:tag", EtagController, :png0
+    get "/gif0/:tag", EtagController, :gif0
+    get "/jpg0/:tag", EtagController, :jpg0
+    get "/pngF/:tag", EtagController, :pngF
+    get "/gifF/:tag", EtagController, :gifF
+    get "/jpgF/:tag", EtagController, :jpgF
 
     live "/demo", Demo
   end

@@ -20,11 +20,15 @@ defmodule BadgerData.Schema.Token do
     optional_fields = [:path, :site_id]
 
     token
+    |> get_site_id(
     |> cast(params, required_fields ++ optional_fields)
     |> validate_required(required_fields)
   end
 
   def new_changeset do
     changeset(%BadgerData.Schema.Token{}, %{})
+  end
+
+  def site_id_for_tag() do
   end
 end

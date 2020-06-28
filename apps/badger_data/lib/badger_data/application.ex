@@ -25,6 +25,4 @@ defmodule BadgerData.Application do
       opts
     end
   end
-
-
 end

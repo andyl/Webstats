@@ -12,7 +12,7 @@ defmodule BadgerWeb.SessionController do
     case Api.User.user_auth_by_email_and_pwd(email, pwd) do
       {:ok, user} ->
         conn
-        |> BadgerWeb.Auth.login(user)
+        |> BadgerWeb.Plug.Auth.login(user)
         |> put_flash(:info, "Welcome back!")
         |> redirect(to: Routes.home_path(conn, :index))
 
@@ -25,7 +25,7 @@ defmodule BadgerWeb.SessionController do
 
   def delete(conn, _) do
     conn
-    |> BadgerWeb.Auth.logout()
+    |> BadgerWeb.Plug.Auth.logout()
     |> redirect(to: Routes.home_path(conn, :index))
   end
 end

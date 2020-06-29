@@ -25,7 +25,7 @@ defmodule BadgerWeb.UserController do
     case Api.User.user_signup(user_params) do
       {:ok, user} ->
         conn
-        |> BadgerWeb.Auth.login(user)
+        |> BadgerWeb.Plug.Auth.login(user)
         |> put_flash(:info, "#{user.name} created!")
         |> redirect(to: Routes.user_path(conn, :index))
 

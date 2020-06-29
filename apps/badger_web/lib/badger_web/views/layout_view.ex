@@ -27,10 +27,10 @@ defmodule BadgerWeb.LayoutView do
   end
 
   def footer_img(conn) do
-    hostid = BadgerData.Api.Site.apphost_id()
+    host_tag = conn.assigns.host_tag
     r_path = conn.request_path
     """
-    <img src="/png0/#{hostid}?path=#{r_path}">
+    <img src="/png0/#{host_tag}?path=#{r_path}">
     """ |> Phoenix.HTML.raw()
   end
 end

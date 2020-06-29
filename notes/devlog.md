@@ -61,18 +61,19 @@
 
 - [x] Fix tests
 - [x] Fix rendering
-- [ ] Compile image instead of lookup
-- [ ] Just return image - lookup token in background
 
-Add a function to lookup "badger_host" - memoize in an Agent, or a Registry.
-Use plug to set assign in every lookup...
+## 2020 Jun 29 Mon
+
+- [x] Add a function to lookup "badger_host" - memoize in an Agent, or a Registry.
+- [x] Use plug to set assign in every lookup...
+- [x] Memoize images
+- [x] Use tag to record views in badger application
+- [x] Handle unknown_tag 
+- [x] Record views in badger application
+
+- [ ] Get Oban installed
 
 ## TBD
 
-- [ ] Use tag to record views in badger application
-- [ ] Handle unknown_tag 
-- [ ] Record views in badger application
-
-- [ ] Get Oban installed
 - [ ] Write influx exporter
 - [ ] Add influx downstream to seed data

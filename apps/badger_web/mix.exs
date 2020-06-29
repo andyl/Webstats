@@ -49,6 +49,7 @@ defmodule BadgerWeb.MixProject do
       # ----- util
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},
+      {:memoize, "~> 1.3"},
       {:timex, "~> 3.1"},
       # ----- monitoring and tracing
       {:observer_cli, "~> 1.5"},

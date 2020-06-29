@@ -8,8 +8,8 @@ defmodule BadgerWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug Phoenix.LiveView.Flash
-    plug BadgerWeb.Auth
-    plug BadgerWeb.SiteTag
+    plug BadgerWeb.Plug.Auth
+    plug BadgerWeb.Plug.SiteTag
   end
 
   pipeline :api do

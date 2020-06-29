@@ -9,7 +9,7 @@ defmodule BadgerWeb.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      BadgerWeb.Endpoint
+      BadgerWeb.Endpoint 
       # Starts a worker by calling: BadgerWeb.Worker.start_link(arg)
       # {BadgerWeb.Worker, arg},
     ]

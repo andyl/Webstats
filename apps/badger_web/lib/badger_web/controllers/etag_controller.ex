@@ -17,7 +17,11 @@ defmodule BadgerWeb.EtagController do
     token = find_or_create_token(conn, params) 
     ftype = String.split(ipath, ".") |> List.last()
 
-    Task.async(fn -> record_view(token, conn, params) end)
+    if unquote(Mix.env == :test) do
+      record_view(token, conn, params)
+    else
+      Task.start(fn -> record_view(token, conn, params) end)
+    end
 
     conn
     |> put_resp_header("etag", token.key)
@@ -32,7 +36,12 @@ defmodule BadgerWeb.EtagController do
       client_ua: ua_for(conn)
     }
 
+    # create view record
     Api.View.create(opts, token: token)
+
+    # enqueue export job
+    BadgerData.Workers.Test1Worker.new(%{opts: opts}) |> Oban.insert()
+
   end
 
   defp ua_for(conn) do

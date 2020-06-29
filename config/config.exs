@@ -6,7 +6,7 @@ config :badger_data,
 
 config :badger_data, Oban,
   repo: BadgerData.Repo,
-  queues: [default: 10, events: 50, media: 20]
+  queues: [default: 10, parallel: 10, serial: 1]
 
 config :badger_web,
   generators: [context_app: false]

@@ -70,8 +70,8 @@
 - [x] Use tag to record views in badger application
 - [x] Handle unknown_tag 
 - [x] Record views in badger application
-
-- [ ] Get Oban installed
+- [x] Get Oban installed
+- [x] Write Oban worker
 
 ## TBD
 

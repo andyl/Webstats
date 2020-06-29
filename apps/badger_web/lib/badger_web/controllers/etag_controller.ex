@@ -40,7 +40,9 @@ defmodule BadgerWeb.EtagController do
     Api.View.create(opts, token: token)
 
     # enqueue export job
-    BadgerData.Workers.Test1Worker.new(%{opts: opts}) |> Oban.insert()
+    %{opts: opts}
+    |> BadgerData.Workers.Test1Worker.new() 
+    |> Oban.insert()
 
   end
 

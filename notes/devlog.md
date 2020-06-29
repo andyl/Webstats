@@ -77,3 +77,5 @@
 
 - [ ] Write influx exporter
 - [ ] Add influx downstream to seed data
+- [ ] Write influx setup script
+- [ ] Write grafana graphs

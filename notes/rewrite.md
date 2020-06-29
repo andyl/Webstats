@@ -24,9 +24,12 @@
 
 BackEnd:
 - [x] Use site-tags
-- [ ] Get Oban installed (into the BadgerData app...)
+- [x] Get Oban installed (into the BadgerData app...)
 - [ ] Write export job for Influx (
 - [ ] Add influx downstream to seed data
+- [ ] Write influx setup script
+- [ ] Write grafana graphs
+- [ ] Deploy to bugmark.tech
 
 UI:
 - [ ] Create a dummy app

@@ -9,7 +9,7 @@ defmodule BadgerData.Api.Site do
   defp new_site(name, url) do
     Site.changeset(
       %Site{},
-      %Site{
+      %{
         url: url,
         name: name,
         tag: Site.tag_for_name(name)
@@ -30,8 +30,7 @@ defmodule BadgerData.Api.Site do
   # ----- queries -----
   
   def create(opts \\ %{}) do
-    Site.changeset(%Site{}, opts)
-    |> Repo.insert!()
+    Site.changeset(%Site{}, opts) |> Repo.insert!()
   end
 
   def first_id do
@@ -57,5 +56,13 @@ defmodule BadgerData.Api.Site do
 
   def get_by_id(id) do
     Site |> Repo.get_by(id: id)
+  end
+
+  def get_by_tag(tag) do
+    case tag do
+      nil -> badger_404()
+      "" -> badger_404()
+      _ -> Repo.get_by(Site, tag: tag) || badger_404()
+    end
   end
 end

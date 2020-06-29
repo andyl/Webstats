@@ -17,13 +17,13 @@ defmodule BadgerWeb.EtagController do
     token = find_or_create_token(conn, params) 
     ftype = String.split(ipath, ".") |> List.last()
 
-    IO.inspect("-------------------------")
-    IO.inspect("SEND IMG")
-    IO.inspect ipath
-    IO.inspect params
-    IO.inspect token
-    IO.inspect ftype
-    IO.inspect("-------------------------")
+    # IO.inspect("-------------------------")
+    # IO.inspect("SEND IMG")
+    # IO.inspect ipath
+    # IO.inspect params
+    # IO.inspect token
+    # IO.inspect ftype
+    # IO.inspect("-------------------------")
 
     record_view(token, conn, params)
 

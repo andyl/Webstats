@@ -3,10 +3,13 @@ defmodule BadgerData.Schema.Token do
   Token schema
   """
   use Ecto.Schema
+
+  alias BadgerData.Api.Site
   import Ecto.Changeset
 
   schema "tokens" do
     field :key,   :string
+    field :req_tag, :string
     field :path,  :string
 
     belongs_to :site, BadgerData.Schema.Site
@@ -17,11 +20,11 @@ defmodule BadgerData.Schema.Token do
 
   def changeset(token, params \\ %{}) do
     required_fields = [:key]
-    optional_fields = [:path, :site_id]
+    optional_fields = [:path, :site_id, :req_tag]
 
     token
-    |> get_site_id(
     |> cast(params, required_fields ++ optional_fields)
+    |> set_site_id()
     |> validate_required(required_fields)
   end
 
@@ -29,6 +32,8 @@ defmodule BadgerData.Schema.Token do
     changeset(%BadgerData.Schema.Token{}, %{})
   end
 
-  def site_id_for_tag() do
+  def set_site_id(changeset) do
+    site = changeset |> get_change(:req_tag) |> Site.get_by_tag()
+    changeset |> put_change(:site_id, site.id)
   end
 end

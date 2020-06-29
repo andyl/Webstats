@@ -17,14 +17,14 @@ defmodule BadgerData.Schema.Site do
   end
 
   def changeset(site, params \\ %{}) do
-    required_fields = [:name, :tag]
-    optional_fields = [:url, :user_id]
+    required_fields = [:name]
+    optional_fields = [:url, :user_id, :tag]
 
     site
     |> cast(params, required_fields ++ optional_fields)
+    |> set_tag_if_empty()
     |> unique_constraint(:name)
     |> unique_constraint(:tag)
-    |> set_tag_if_empty()
     |> validate_required(required_fields)
   end
 

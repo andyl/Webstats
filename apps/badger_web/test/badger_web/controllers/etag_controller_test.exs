@@ -12,7 +12,7 @@ defmodule BadgerWeb.EtagControllerTest do
 
   # basic response
   test "GET /png0/1", %{conn: conn} do
-    conn = get(conn, "/png0/#{siteid()}?path=/a/b/c")
+    conn = get(conn, "/png0/#{site_tag()}?path=/a/b/c")
     assert response(conn, 200)
   end
 
@@ -20,7 +20,7 @@ defmodule BadgerWeb.EtagControllerTest do
   test "GET /png0/2", %{conn: conn} do
     assert count(Schema.View) == 0
     assert count(Schema.Token) == 0
-    conn = get(conn, "/png0/#{siteid()}")
+    conn = get(conn, "/png0/#{site_tag()}")
     assert response(conn, 200) 
     assert count(Schema.View) == 1
     assert count(Schema.Token) == 1
@@ -30,9 +30,9 @@ defmodule BadgerWeb.EtagControllerTest do
   test "GET /png0/3", %{conn: conn} do
     assert count(Schema.Token) == 0
     assert count(Schema.View) == 0
-    id = siteid()
-    get(conn, "/png0/#{id}")
-    get(conn, "/png0/#{id}")
+    tag = site_tag()
+    get(conn, "/png0/#{tag}")
+    get(conn, "/png0/#{tag}")
     assert count(Schema.Token) == 2
     assert count(Schema.View) == 2
   end
@@ -41,17 +41,21 @@ defmodule BadgerWeb.EtagControllerTest do
   test "GET /png0/4", %{conn: conn} do
     assert count(Schema.Token) == 0
     assert count(Schema.View) == 0
-    id = siteid()
-    resp = get(conn, "/png0/#{id}")
-    altconn(conn, resp) |> get("/png0/#{id}")
+    tag = site_tag()
+    resp = get(conn, "/png0/#{tag}")
+    altconn(conn, resp) |> get("/png0/#{tag}")
     assert count(Schema.Token) == 1
     assert count(Schema.View) == 2
   end
 
   # ---------------------------------------------------------
 
-  defp siteid do
-    BadgerData.Api.Site.apphost_id() 
+  # defp siteid do
+  #   BadgerData.Api.Site.apphost_id() 
+  # end
+  #
+  defp site_tag do
+    BadgerData.Api.Site.badger_host().tag 
   end
 
   defp altconn(conn, resp) do

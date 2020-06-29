@@ -29,6 +29,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
     # holds etag tokens
     create table(:tokens) do
       add :site_id, references(:sites, on_delete: :delete_all)
+      add :req_tag, :string
       add :key, :string
       add :path, :string
       timestamps()

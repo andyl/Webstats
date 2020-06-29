@@ -9,7 +9,7 @@ defmodule BadgerWeb.Router do
     plug :put_secure_browser_headers
     plug Phoenix.LiveView.Flash
     plug BadgerWeb.Auth
-
+    plug BadgerWeb.SiteTag
   end
 
   pipeline :api do
@@ -33,12 +33,12 @@ defmodule BadgerWeb.Router do
     resources "/users", UserController, only: [:index, :show, :new, :create]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
-    get "/png0/:tag", EtagController, :png0
-    get "/gif0/:tag", EtagController, :gif0
-    get "/jpg0/:tag", EtagController, :jpg0
-    get "/pngF/:tag", EtagController, :pngF
-    get "/gifF/:tag", EtagController, :gifF
-    get "/jpgF/:tag", EtagController, :jpgF
+    get "/png0/:req_tag", EtagController, :png0
+    get "/gif0/:req_tag", EtagController, :gif0
+    get "/jpg0/:req_tag", EtagController, :jpg0
+    get "/pngF/:req_tag", EtagController, :pngF
+    get "/gifF/:req_tag", EtagController, :gifF
+    get "/jpgF/:req_tag", EtagController, :jpgF
 
     live "/demo", Demo
   end

@@ -8,25 +8,24 @@ config :badger_data, Oban,
   repo: BadgerData.Repo,
   queues: [default: 10, parallel: 10, serial: 1]
 
+config :badger_data, FeedexData.Exporters.Influx,
+  default_host: "influx_host",
+  default_port: "8086",
+  default_user: "admin",
+  default_pass: "admin", 
+  default_database: "badger_data"
+
 config :badger_web,
   generators: [context_app: false]
 
-# Configures the endpoint
+# Configure the endpoint
 config :badger_web, BadgerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "QT4EfpUZ5vHrbWF+6GGLI37kWRWKJgGq2cuN1nmKkhBQnZgpx8MJ9QosfHGlCVGe",
   render_errors: [view: BadgerWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: BadgerWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
-# Sample configuration:
-#
-#     config :logger, :console,
-#       level: :info,
-#       format: "$date $time [$level] $metadata$message\n",
-#       metadata: [:user_id]
-#
-
-# Configures Elixir's Logger
+# Configure Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]

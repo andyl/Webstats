@@ -37,10 +37,10 @@ defmodule BadgerWeb.EtagController do
     }
 
     # create view record
-    Api.View.create(opts, token: token)
+    view = Api.View.create(opts, token: token)
 
     # enqueue export job
-    %{opts: opts}
+    %{view_id: view.id}
     |> BadgerData.Workers.Test1Worker.new() 
     |> Oban.insert()
 

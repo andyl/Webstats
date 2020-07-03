@@ -80,6 +80,6 @@
 
 ## TBD
 
-- [ ] Replace httpotion with Tesla (https://github.com/teamon/tesla)
 - [ ] Write influx exporter (with setup script)
 - [ ] Write grafana graphs
+- [ ] Replace httpotion with Tesla (https://github.com/teamon/tesla)

@@ -7,7 +7,11 @@ defmodule BadgerData.Exporters.Influx do
   # - add a function to create a database
   # - create an exporter behavior - 3 functions: test, setup, write
 
-  def write_point(measurement, vals, tags) do
+  def write(elapsed, tags, config) do
+    write_point("page_view", %{elapsed: elapsed}, tags, config)
+  end
+
+  defp write_point(measurement, vals, tags, config) do
     tagstr = Enum.map(tags, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
     valstr = Enum.map(vals, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
     "#{measurement},#{tagstr} #{valstr}"
@@ -15,11 +19,9 @@ defmodule BadgerData.Exporters.Influx do
   end
 
   # async send, fire and forget
-  def send(body) do
-    # host 
-    db  = Application.get_env(:badger_data, FeedexData.Exporters.Influx)[:database]
-    url = "localhost:8086/write?db=#{db}&time_precision=s"
-    opt = [body: body, basic_auth: {"admin", "admin"}]
+  def send(body, cfg) do
+    url = "#{cfg.host}:#{cfg.port}/write?db=#{cfg.database}&time_precision=s"
+    opt = [body: body, basic_auth: {cfg.user, cfg.pass}]
     Task.start(fn -> HTTPotion.post(url, opt) end)
   end
 end

@@ -41,7 +41,7 @@ defmodule BadgerData.MixProject do
       {:ex_machina, "~> 2.3"},
       {:pbkdf2_elixir, "~> 1.0"},
       {:httpotion, "~> 3.1.0"},
-      {:oban, "~> 2.0.0-rc.2"}, 
+      {:oban, "~> 2.0.0-rc.3"}, 
       {:jason, "~> 1.0"}
     ]
   end

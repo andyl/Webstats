@@ -13,14 +13,19 @@ defmodule BadgerWeb.EtagController do
   # ---------------------------------------
 
   defp send_img(conn, filetype, params) do
-    ipath = pixel_filepath(filetype)
-    token = find_or_create_token(conn, params) 
-    ftype = String.split(ipath, ".") |> List.last()
+    setup = fn() ->
+      ipath = pixel_filepath(filetype)
+      token = find_or_create_token(conn, params) 
+      ftype = String.split(ipath, ".") |> List.last()
+      {ipath, token, ftype}
+    end
+
+    {elapsed, {ipath, token, ftype}} = :timer.tc(setup, [])
 
     if unquote(Mix.env == :test) do
-      record_view(token, conn, params)
+      record_view(token, conn, elapsed)
     else
-      Task.start(fn -> record_view(token, conn, params) end)
+      Task.start(fn -> record_view(token, conn, elapsed) end)
     end
 
     conn
@@ -29,7 +34,7 @@ defmodule BadgerWeb.EtagController do
     |> send_file(200, ipath, 0, :all)
   end
 
-  defp record_view(token, conn, _params) do
+  defp record_view(token, conn, elapsed) do
   
     opts = %{
       client_ip: conn.remote_ip |> Tuple.to_list() |> Enum.join(".") || "",
@@ -40,7 +45,7 @@ defmodule BadgerWeb.EtagController do
     view = Api.View.create(opts, token: token)
 
     # enqueue export job
-    %{view_id: view.id}
+    %{elapsed: elapsed, view_id: view.id}
     |> BadgerData.Workers.Test1Worker.new() 
     |> Oban.insert()
 

@@ -9,6 +9,9 @@ defmodule BadgerData.Schema.DownstreamTest do
     :ok 
   end
 
+  @conf %{host: "x", db: "y", pass: "z", user: "a", port: "b"}
+  @attr %{name: "aa", type: "influx", config: @conf}
+
   test "greet the world" do
     assert "hello" == "hello"
   end
@@ -16,8 +19,7 @@ defmodule BadgerData.Schema.DownstreamTest do
   describe "changesets" do
     test "accepts valid input" do
       tmap = %Downstream{}
-      attr = %{name: "aa", type: "bb", address: "cc", credentials: "dd"}
-      cs = Downstream.changeset(tmap, attr)
+      cs = Downstream.changeset(tmap, @attr)
       assert cs.valid?
     end
   end
@@ -25,8 +27,7 @@ defmodule BadgerData.Schema.DownstreamTest do
   describe "inserting records" do
     test "adds a record" do
       tmap = %Downstream{}
-      attr = %{name: "aa", type: "bb", address: "cc", credentials: "dd"}
-      cset = Downstream.changeset(tmap, attr)
+      cset = Downstream.changeset(tmap, @attr)
       assert count(Downstream) == 0
       assert {:ok, _result} = Repo.insert(cset)
       assert count(Downstream) == 1

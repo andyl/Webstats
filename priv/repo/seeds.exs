@@ -3,7 +3,7 @@
 
 IO.puts "RELOADING BADGER DATA"
 
-alias BadgerData.Schema.{User, Site, View, Token}
+alias BadgerData.Schema.{User, Site, View, Token, Downstream}
 alias BadgerData.Repo
 
 defmodule Lcl do
@@ -27,6 +27,19 @@ Repo.insert(
     name: "aaa",
     email: "aaa",
     pwd_hash: User.pwd_hash("aaa"),
+    downstreams: [
+      %{
+        name: "test1",
+        type: "influx",
+        config: %{
+          host: "influx_host",
+          port: "8086",
+          user: "admin",
+          pass: "admin",
+          database: "badger_dev"
+        }
+      }
+    ], 
     sites: [
       Lcl.sitefor("badger_host",        "http://localhost"), 
       Lcl.sitefor("badger_404",         "http://tbd"), 

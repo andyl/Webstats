@@ -50,8 +50,7 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       add :user_id, references(:users, on_delete: :delete_all)
       add :name, :string
       add :type, :string
-      add :address, :string
-      add :credentials, :string
+      add :config, :map
       add :status, :string
       add :last_export_at, :utc_datetime
       add :cursor, :integer

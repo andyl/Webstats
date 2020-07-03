@@ -14,6 +14,7 @@ defmodule BadgerData.Schema.User do
     timestamps(type: :utc_datetime)
 
     has_many(:sites, Schema.Site)
+    has_many(:downstreams, Schema.Downstream)
   end
 
   def changeset(user, attrs) do

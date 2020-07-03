@@ -10,12 +10,15 @@ defmodule BadgerData.Api.DownstreamTest do
     :ok 
   end
 
+  @conf %{host: "x", db: "y", pass: "z", user: "a", port: "b"}
+  @attr %{name: "aa", type: "influx", config: @conf}
+
   describe "#downstream_add" do
     test "valid downstream" do
-      attr = %{name: "aa", address: "bb", type: "cc", credentials: "dd"}
       assert count(Schema.Downstream)== 0
-      Downstream.downstream_add(attr)
+      Downstream.downstream_add(@attr)
       assert count(Schema.Downstream) == 1
     end
   end
 end
+

@@ -5,7 +5,7 @@ defmodule BadgerData.Exporters.Influx do
   # - add a test function (can login)
   # - add a test function (database active)
   # - add a function to create a database
-  # - create an exporter behavior
+  # - create an exporter behavior - 3 functions: test, setup, write
 
   def write_point(measurement, vals, tags) do
     tagstr = Enum.map(tags, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
@@ -16,7 +16,7 @@ defmodule BadgerData.Exporters.Influx do
 
   # async send, fire and forget
   def send(body) do
-    host 
+    # host 
     db  = Application.get_env(:badger_data, FeedexData.Exporters.Influx)[:database]
     url = "localhost:8086/write?db=#{db}&time_precision=s"
     opt = [body: body, basic_auth: {"admin", "admin"}]

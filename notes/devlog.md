@@ -73,9 +73,13 @@
 - [x] Get Oban installed
 - [x] Write Oban worker
 
+## 2020 Jul 03 Fri
+
+- [x] Add STI for downstreams
+- [x] Add influx downstream to seed data
+
 ## TBD
 
-- [ ] Write influx exporter
-- [ ] Add influx downstream to seed data
-- [ ] Write influx setup script
+- [ ] Replace httpotion with Tesla (https://github.com/teamon/tesla)
+- [ ] Write influx exporter (with setup script)
 - [ ] Write grafana graphs

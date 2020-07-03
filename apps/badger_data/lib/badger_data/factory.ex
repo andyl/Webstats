@@ -24,9 +24,8 @@ defmodule BadgerData.Factory do
   def downstream_factory do
     %Downstream{
       name: sequence(:name, &"downstream_#{&1}"),
-      type: "influxdb",
-      address: "localhost:3050", 
-      credentials: "{'user': 'admin', 'pass': 'admin'}"
+      type: "influx",
+      config: %{host: "x", db: "y", pass: "z", user: "a", port: "b"}
     }
   end
 

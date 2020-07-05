@@ -11,15 +11,15 @@ defmodule BadgerData.Exporters.Influx do
     write_point("page_view", %{elapsed: elapsed}, tags, config)
   end
 
-  defp write_point(measurement, vals, tags, config) do
+  def write_point(measurement, vals, tags, config) do
     tagstr = Enum.map(tags, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
     valstr = Enum.map(vals, fn({k,v}) -> "#{k}=#{v}" end) |> Enum.join(",")
     "#{measurement},#{tagstr} #{valstr}"
-    |> send()
+    |> point_send(config)
   end
 
   # async send, fire and forget
-  def send(body, cfg) do
+  def point_send(body, cfg) do
     url = "#{cfg.host}:#{cfg.port}/write?db=#{cfg.database}&time_precision=s"
     opt = [body: body, basic_auth: {cfg.user, cfg.pass}]
     Task.start(fn -> HTTPotion.post(url, opt) end)

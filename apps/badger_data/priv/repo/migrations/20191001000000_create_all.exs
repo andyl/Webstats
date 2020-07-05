@@ -60,11 +60,8 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
     # one record for each export job
     create table(:exports) do
       add :downstream_id, references(:downstreams, on_delete: :delete_all)
-      add :starting_record, :integer
-      add :ending_record, :integer
-      add :num_records, :integer
-      add :started_at, :utc_datetime
-      add :finished_at, :utc_datetime
+      add :elapsed_time, :integer
+      add :status, :string
       timestamps()
     end
   end

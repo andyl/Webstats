@@ -78,6 +78,8 @@
 - [x] Add STI for downstreams
 - [x] Add influx downstream to seed data
 
+## 2020 Jul 05 Sun
+
 ## TBD
 
 - [ ] Write influx exporter (with setup script)

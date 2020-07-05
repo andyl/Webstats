@@ -54,6 +54,10 @@ defmodule BadgerData.Api.Site do
     apphost().id
   end
 
+  def site_get(site_id) do
+    Repo.get(Site, site_id)
+  end
+
   def get_by_id(id) do
     Site |> Repo.get_by(id: id)
   end

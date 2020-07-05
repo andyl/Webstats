@@ -22,6 +22,10 @@ defmodule BadgerData.Api.Token do
     get_by_key(key) || create(key, params)
   end
 
+  def token_get(token_id) do
+    Repo.get(Token, token_id)
+  end
+
   defp generate_key do
     :crypto.strong_rand_bytes(24) |> Base.encode16(case: :lower)
   end

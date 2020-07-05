@@ -35,7 +35,6 @@ defmodule BadgerWeb.EtagController do
   end
 
   defp record_view(token, conn, elapsed) do
-  
     opts = %{
       client_ip: conn.remote_ip |> Tuple.to_list() |> Enum.join(".") || "",
       client_ua: ua_for(conn)
@@ -48,7 +47,6 @@ defmodule BadgerWeb.EtagController do
     %{elapsed: elapsed, view_id: view.id}
     |> BadgerData.Workers.Test1Worker.new() 
     |> Oban.insert()
-
   end
 
   defp ua_for(conn) do

@@ -53,11 +53,11 @@ defmodule BadgerData.Api.User do
   def downstreams(user_id) do
     from(dstream in Downstream,
       where: dstream.user_id == ^user_id,
-      order_by: dstream.name,
       select: %{
-        downstream_id: dstream.id,
-        downstream_name: dstream.name,
-        downstream_url: dstream.url
+        id: dstream.id,
+        name: dstream.name,
+        type: dstream.type,
+        config: dstream.config
       }
     )
     |> Repo.all()

@@ -78,10 +78,11 @@
 - [x] Add STI for downstreams
 - [x] Add influx downstream to seed data
 
-## 2020 Jul 05 Sun
+## 2020 Jul 06 Mon
+
+- [x] Write influx exporter (with setup script)
 
 ## TBD
 
-- [ ] Write influx exporter (with setup script)
 - [ ] Write grafana graphs
 - [ ] Replace httpotion with Tesla (https://github.com/teamon/tesla)

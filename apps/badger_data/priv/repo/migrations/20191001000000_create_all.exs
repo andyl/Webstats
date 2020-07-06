@@ -52,7 +52,6 @@ defmodule BadgerData.Repo.Migrations.CreateAll do
       add :type, :string
       add :config, :map
       add :status, :string
-      add :last_export_at, :utc_datetime
       add :cursor, :integer
       timestamps()
     end

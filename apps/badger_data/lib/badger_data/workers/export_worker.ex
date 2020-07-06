@@ -4,13 +4,13 @@ defmodule BadgerData.Workers.ExportWorker do
   alias BadgerData.Api.{User, View, Site, Token}
 
   @impl Oban.Worker
-  def perform(args) do
+  def perform(job) do
 
-    elapsed = args.elapsed
-    view = View.view_get(args.view_id)
-    site = Site.site_get(view.site_id)
-    user = User.user_get(site.user_id)
+    elapsed = job.args["elapsed"]
+    view = View.view_get(job.args["view_id"])
     token = Token.token_get(view.token_id)
+    site = Site.site_get(token.site_id)
+    user = User.user_get(site.user_id)
     downstreams = User.downstreams(user.id)
 
     for downstream <- downstreams do
@@ -29,12 +29,16 @@ defmodule BadgerData.Workers.ExportWorker do
       end
       {elapsed, result} = :timer.tc(export, [])
 
-      
+      ex_opts = %{
+        elapsed_time: elapsed,
+        status: inspect(result)
+      }
+      BadgerData.Api.Export.export_add(ex_opts)
 
-
-
-      
-
+      ds_opts = %{
+        cursor: view.id
+      }
+      BadgerData.Api.Downstream.downstream_update(downstream.id, ds_opts)
     end
 
     :ok

@@ -45,7 +45,7 @@ defmodule BadgerWeb.EtagController do
 
     # enqueue export job
     %{elapsed: elapsed, view_id: view.id}
-    |> BadgerData.Workers.Test1Worker.new() 
+    |> BadgerData.Workers.ExportWorker.new() 
     |> Oban.insert()
   end
 

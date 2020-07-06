@@ -31,9 +31,8 @@ defmodule BadgerData.Factory do
 
   def export_factory do
     %Export{
-      starting_record: 10,
-      ending_record: 15,
-      num_records: 4
+      elapsed_time: 10,
+      status: "ok"
     }
   end
 

@@ -20,8 +20,8 @@ defmodule BadgerData.Exporters.Influx do
 
   # async send, fire and forget
   def point_send(body, cfg) do
-    url = "#{cfg.host}:#{cfg.port}/write?db=#{cfg.database}&time_precision=s"
-    opt = [body: body, basic_auth: {cfg.user, cfg.pass}]
+    url = "#{cfg["host"]}:#{cfg["port"]}/write?db=#{cfg["database"]}&time_precision=s"
+    opt = [body: body, basic_auth: {cfg["user"], cfg["pass"]}]
     Task.start(fn -> HTTPotion.post(url, opt) end)
   end
 end

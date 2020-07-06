@@ -3,7 +3,7 @@
 
 IO.puts "RELOADING BADGER DATA"
 
-alias BadgerData.Schema.{User, Site, View, Token, Downstream}
+alias BadgerData.Schema.{User, Site, View, Token}
 alias BadgerData.Repo
 
 defmodule Lcl do

@@ -12,7 +12,6 @@ defmodule BadgerData.Schema.Downstream do
     field(:type, :string)
     field(:config, :map)
     field(:status, :string)
-    field(:last_export_at, :utc_datetime)
     field(:cursor, :integer)
     timestamps(type: :utc_datetime)
 
@@ -27,7 +26,7 @@ defmodule BadgerData.Schema.Downstream do
 
   def changeset(downstream, attrs) do
     required_fields = [:name, :type]
-    optional_fields = [:status, :last_export_at, :cursor, :config]
+    optional_fields = [:status, :cursor, :config]
 
     downstream
     |> cast(attrs, required_fields ++ optional_fields)

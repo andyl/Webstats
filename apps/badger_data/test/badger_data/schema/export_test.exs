@@ -16,7 +16,7 @@ defmodule BadgerData.Schema.ExportTest do
   describe "changesets" do
     test "accepts valid input" do
       tmap = %Export{}
-      attr = %{starting_record: 10, ending_record: 15, num_records: 4}
+      attr = %{status: "ok", cursor: 10}
       cs = Export.changeset(tmap, attr)
       assert cs.valid?
     end
@@ -25,7 +25,7 @@ defmodule BadgerData.Schema.ExportTest do
   describe "inserting records" do
     test "adds a record" do
       tmap = %Export{}
-      attr = %{starting_record: 10, ending_record: 15, num_records: 4}
+      attr = %{status: "ok", cursor: 10}
       cset = Export.changeset(tmap, attr)
       assert count(Export) == 0
       assert {:ok, _result} = Repo.insert(cset)

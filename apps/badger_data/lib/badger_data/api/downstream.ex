@@ -32,7 +32,7 @@ defmodule BadgerData.Api.Downstream do
   end
 
   def downstream_get(downstream_id) do
-    Repo.get(Downstream, downstream_id)
+    Repo.get(BadgerData.Schema.Downstream, force_int(downstream_id))
   end
 
   def downstream_get_by(params) do
@@ -49,9 +49,24 @@ defmodule BadgerData.Api.Downstream do
     Downstream.changeset(downstream, %{})
   end
 
+  def downstream_update(downstream_id, opts) do
+    downstream_id
+    |> downstream_get()
+    |> Downstream.changeset(opts)
+    |> Repo.update()
+  end
+
   def downstream_change(_downstream_id) do
   end
 
   def downstream_delete(_downstream_id) do
+  end
+
+  defp force_int(val) when is_integer(val) do
+    val
+  end
+
+  defp force_int(val) do
+    String.to_integer(val)
   end
 end

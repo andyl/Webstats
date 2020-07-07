@@ -1,5 +1,5 @@
 # Add application data
-# > mix run priv/repo/seeds.exs
+# > mix run priv/repo/seed_prod.exs
 
 IO.puts "RELOADING BADGER DATA"
 
@@ -29,14 +29,14 @@ Repo.insert(
     pwd_hash: User.pwd_hash("aaa"),
     downstreams: [
       %{
-        name: "test1",
+        name: "prod1",
         type: "influx",
         config: %{
-          host: "influx_host",
+          host: "localhost",
           port: "8086",
           user: "admin",
           pass: "admin",
-          database: "badger_dev"
+          database: "badger_prod"
         }
       }
     ], 
@@ -57,7 +57,8 @@ Repo.insert(
       Lcl.sitefor("starvan_io_dev",     "http://dixy:1313"),
       Lcl.sitefor("badger_readme",      "https://github.com/andyl/badger"),
       Lcl.sitefor("feedex_readme",      "https://github.com/andyl/feedex"),
-      Lcl.sitefor("jobex_readme",       "https://github.com/andyl/jobex")
+      Lcl.sitefor("jobex_readme",       "https://github.com/andyl/jobex"),
+      Lcl.sitefor("extending_readme",   "https://github.com/andyl/extending_elixir")
     ]
   }
 )

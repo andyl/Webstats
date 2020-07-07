@@ -2,11 +2,12 @@
 
 Badge Server
 
-To get running:
+To get running in dev mode:
 
     > cd apps/badger_web/assets
     > npm install
     > cd ../../..
+    > mix do deps.get, ecto.create, ecto.setup
     > mix phx.server
 
 ## Production requirements
@@ -18,6 +19,10 @@ To get running:
 ## Installing
 
 - Clone the repo
+- Install assets
+    > cd apps/badger_web/assets
+    > npm install
+    > cd ../../..
 - `MIX_ENV=prod mix do deps.get, ecto.create, ecto.setup, release`
 - Start the release
 - Browse to `locahost:5020`

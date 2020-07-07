@@ -18,30 +18,29 @@ To get running:
 ## Installing
 
 - Clone the repo
-- `MIX_ENV=prod mix do deps.get, ecto.create, ecto.setup, distillery.release`
+- `MIX_ENV=prod mix do deps.get, ecto.create, ecto.setup, release`
 - Start the release
-- Browse to `locahost:5070`
+- Browse to `locahost:5020`
 
 ## Using SystemD
 
 Create the database and run the migrations.  Then:
 
-- edit the SystemD service file in `rel/feedex.service`
-- `sudo cp rel/feedex.service /etc/systemd/system`
-- `sudo chmod 644 /etc/systemd/system/feedex.service`
+- edit the SystemD service file in `rel/badger.service`
+- `sudo cp rel/badger.service /etc/systemd/system`
+- `sudo chmod 644 /etc/systemd/system/badger.service`
 
 Start the service with SystemD
 
-- `sudo systemctl start feedex`
-- `sudo systemctl status feedex`
-- `sudo systemctl restart feedex`
-- `sudo systemctl stop feedex`
-- `sudo journalctl -u feedex -f`
+- `sudo systemctl start badger`
+- `sudo systemctl status badger`
+- `sudo systemctl restart badger`
+- `sudo systemctl stop badger`
+- `sudo journalctl -u badger -f`
 
 Make sure your service starts when the system reboots
 
-- `sudo systemctl enable feedex`
+- `sudo systemctl enable badger`
 
 Reboot and test!
-
 

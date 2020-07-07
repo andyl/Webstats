@@ -7,7 +7,7 @@ Type=simple
 User=aleak
 Group=aleak
 WorkingDirectory=/home/aleak
-ExecStart=/bin/bash --login -c 'source /home/aleak/.bashrc; cd /home/aleak; /home/aleak/src/badger/_build/prod/rel/badger/bin/badger foreground'
+ExecStart=/bin/bash --login -c 'source /home/aleak/.bashrc; cd /home/aleak; /home/aleak/src/badger/_build/prod/rel/badger/bin/badger start'
 Restart=on-failure
 RestartSec=5
 Environment=PORT=5020

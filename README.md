@@ -53,3 +53,5 @@ Make sure your service starts when the system reboots
 
 Reboot and test!
 
+![](https://badger.casmacc.net/png0/30b669?path=NA)
+

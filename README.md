@@ -2,7 +2,7 @@
 
 Badge Server
 
-To get running in dev mode:
+To run in dev mode:
 
     > cd apps/badger_web/assets
     > npm install

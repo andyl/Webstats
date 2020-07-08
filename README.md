@@ -8,6 +8,7 @@ To run in dev mode:
     > npm install
     > cd ../../..
     > mix do deps.get, ecto.create, ecto.setup
+    > mix phx.digest
     > mix phx.server
 
 ## Production requirements
@@ -16,14 +17,17 @@ To run in dev mode:
 - SystemD
 - Postgres (user/pass = postgres/postgres)
 
-## Installing
+## Installing Production
 
 - Clone the repo
 - Install assets
     > cd apps/badger_web/assets
     > npm install
+    > npm run deploy
     > cd ../../..
-- `MIX_ENV=prod mix do deps.get, ecto.create, ecto.setup, release`
+- Setup Release
+    > MIX_ENV=prod mix do phx.digest
+    > MIX_ENV=prod mix do deps.get, ecto.create, ecto.setup, release
 - Start the release
 - Browse to `locahost:5020`
 

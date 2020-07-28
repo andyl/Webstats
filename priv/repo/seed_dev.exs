@@ -25,7 +25,7 @@ Repo.insert(
           host: "influx_host",
           port: "8086",
           user: "admin",
-          pass: "admin",
+          pass: "ADMIN",
           database: "badger_dev"
         }
       }

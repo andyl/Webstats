@@ -16,7 +16,8 @@ config :badger_data, FeedexData.Exporters.Influx,
   default_database: "badger_data"
 
 config :badger_web,
-  generators: [context_app: false]
+  generators: [context_app: false],
+  badger_tag: "Badger"
 
 # Configure the endpoint
 config :badger_web, BadgerWeb.Endpoint,

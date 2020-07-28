@@ -7,19 +7,23 @@ defmodule BadgerData.Api.Site do
   # ----- defined sites -----
 
   defp new_site(name, url) do
+    new_site(name, url, Site.tag_for_name(name))
+  end
+
+  defp new_site(name, url, tag) do
     Site.changeset(
       %Site{},
       %{
         url: url,
         name: name,
-        tag: Site.tag_for_name(name)
+        tag: tag
       }
     )
   end
 
   def badger_host do
     Repo.get_by(Site, name: "badger_host") || 
-      new_site("badger_host", "http://localhost") |> Repo.insert!()
+      new_site("badger_host", "http://localhost", Application.get_env(:badger_web, :badger_tag)) |> Repo.insert!()
   end
 
   def badger_404 do

@@ -82,6 +82,10 @@
 
 - [x] Write influx exporter (with setup script)
 
+## 2020 Jul 28 Tue
+
+- [x] Read site tokens from seed, or generate
+
 ## TBD
 
 - [ ] Write grafana graphs
